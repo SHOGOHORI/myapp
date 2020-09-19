@@ -8,6 +8,7 @@ gem 'webpacker',  '4.0.7'
 gem 'turbolinks', '5.2.0'
 gem 'jbuilder',   '2.9.1'
 gem 'bootsnap',   '1.4.5', require: false
+gem 'rake', '~> 13.0', '>= 13.0.1'
 
 group :development, :test do
   gem 'sqlite3', '1.4.1'
@@ -25,4 +26,8 @@ group :test do
   gem 'capybara',           '3.28.0'
   gem 'selenium-webdriver', '3.142.4'
   gem 'webdrivers',         '4.1.2'
+end
+
+group :production do
+  gem 'pg', '~> 1.2', '>= 1.2.3'
 end
