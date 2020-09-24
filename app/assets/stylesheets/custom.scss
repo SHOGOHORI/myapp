@@ -13,8 +13,9 @@ $light-gray: #fff;
 /* universal */
 
 body {
-  padding-top: 60px;
-  font-family: arial unicode ms;
+  padding-top: 100px;
+  font-family: Amatic SC;
+  background-color: #fef6e4;
 }
 
 section {
@@ -32,6 +33,10 @@ textarea {
   }
 }
 
+.container {
+  marigin-top: 200px;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -47,6 +52,10 @@ h1 {
 
 /* header */
 
+header{
+  background-color: #001858;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -55,6 +64,7 @@ h1 {
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
+  padding-bottom: 9px;
   font-weight: bold;
   &:hover {
   color: $light-gray;
