@@ -1,9 +1,8 @@
 ja:
   activerecord:
-    models:
-      users: "ユーザー"
     attributes:
-      users:
+      user:
         name: "お名前"
         email: "メールアドレス"
         password: "パスワード"
+        password_comfirmation: "パスワード確認"
