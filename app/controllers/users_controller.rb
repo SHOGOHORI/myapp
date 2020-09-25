@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    log_in @user
     @user = User.new
   end
 
