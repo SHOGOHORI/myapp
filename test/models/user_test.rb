@@ -94,4 +94,8 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "authenticated?ダイジェストがnilのユーザーにはfalseを返す" do
+    assert_not @user.authenticated?('')
+  end
+
 end
