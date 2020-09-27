@@ -12,6 +12,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "ログインせずにユーザー一覧表示" do
+    get users_path
+    assert_redirected_to login_url
+  end
+
   test "ログインせずにユーザー編集画面にリダイレクトする" do
     get edit_user_path(@user)
     assert_not flash.empty?
