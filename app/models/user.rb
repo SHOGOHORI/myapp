@@ -8,7 +8,7 @@ class User < ApplicationRecord
              uniqueness: true
   VALID_PASSWORD_REGEX = /\A(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[!-\/:-@\[-`{-~])[!-~]{10,40}\z/
   has_secure_password
-  validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }
+  validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
 
   class << self
     # 渡された文字列のハッシュ値を返す
