@@ -45,7 +45,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
-  test "adminをWeb経由で編集する" do
+  test "権限をWeb経由で編集する" do
     log_in_as(@other_user)
     assert_not @other_user.admin?
     patch user_path(@other_user), params: {
@@ -53,6 +53,21 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
                                             password_confirmation: "password",
                                             admin: true } }
     assert_not @other_user.reload.admin?
+  end
+
+  test "ログインせずにユーザーを削除する" do
+    assert_no_difference 'User.count' do
+      delete user_path(@user)
+    end
+    assert_redirected_to login_url
+  end
+
+  test "権限なしのユーザーがユーザーを削除する" do
+    log_in_as(@other_user)
+    assert_no_difference 'User.count' do
+      delete user_path(@user)
+    end
+    assert_redirected_to root_url
   end
 
 end

@@ -6,3 +6,7 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_comfirmation: "パスワード確認"
+    // views:
+    //   pagination:
+    //     Previous Label: "前"
+    //     Next Label: "次"
