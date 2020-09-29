@@ -19,6 +19,10 @@ gem 'execjs', '~> 2.7'
 
 group :development, :test do
   gem 'sqlite3', '1.4.1'
+  gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
+  gem 'factory_bot_rails', '~> 6.1'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
+  gem 'spring-commands-rspec', '~> 1.0', '>= 1.0.4'
   gem 'byebug',  '11.0.1', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -30,11 +34,11 @@ group :development do
 end
 
 group :test do
-  gem 'capybara',                 '3.28.0'
+  gem 'capybara', '~> 3.33'
   gem 'selenium-webdriver',       '3.142.4'
-  gem 'webdrivers',               '4.1.2'
-  gem 'rails-controller-testing', '1.0.4'
-  gem 'minitest',                 '5.11.3'
+  gem 'webdrivers', '~> 4.4', '>= 4.4.1'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
+  gem 'minitest', '~> 5.14', '>= 5.14.2'
   gem 'minitest-reporters',       '1.3.8'
   gem 'guard',                    '2.16.2'
   gem 'guard-minitest',           '2.4.6'
