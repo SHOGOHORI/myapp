@@ -23,6 +23,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.1'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
   gem 'spring-commands-rspec', '~> 1.0', '>= 1.0.4'
+  gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
   gem 'byebug',  '11.0.1', platforms: [:mri, :mingw, :x64_mingw]
 end
 
