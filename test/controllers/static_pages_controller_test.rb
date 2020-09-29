@@ -1,5 +1,5 @@
 require 'test_helper'
-
+#RSpecへ移行済み
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   test "should get home" do
     get root_path

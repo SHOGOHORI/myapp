@@ -1,5 +1,5 @@
 require 'test_helper'
-
+#RSpecに移行済み
 class UserTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
@@ -90,7 +90,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "パスワードが長すぎる場合無効な状態であること" do
-    @user.password = @user.password_confirmation = "a" * 38 + "A" + "1" + "?"
+    @user.password = @user.password_confirmation = c
     assert_not @user.valid?
   end
 
