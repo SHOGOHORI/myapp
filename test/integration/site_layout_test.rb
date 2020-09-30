@@ -1,5 +1,5 @@
 require 'test_helper'
-
+#RSpecに移行済み
 class SiteLayoutTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
