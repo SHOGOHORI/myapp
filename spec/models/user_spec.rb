@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'メールアドレス' do
+  describe 'メールアドレスのバリデーション(presence,length)' do
     let(:user) { build(:user, email: email ) }
     subject { user }
     context "ブランクの場合無効" do
@@ -30,28 +30,28 @@ RSpec.describe User, type: :model do
       let(:email) { "a" * 244 + "@example.com" }
       it { is_expected.to_not be_valid }
     end
+  end
 
-    # エラーがおかしい
-    context '有効なメールアドレス' do
+   
+  describe 'メールアドレスのバリデーション(正規表現)' do
+    it '有効なメールアドレス' do
       valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
                            first.last@foo.jp alice+bob@baz.cn]
       valid_addresses.each do |valid_address|
-        let(:email) { valid_address }
-        it { is_expected.to be_valid }
+        expect( build(:user, email: valid_address) ).to be_valid
       end
     end
 
-    # エラーがおかしい
-    context '無効なメールアドレス' do
+    it '無効なメールアドレス' do
       invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
                             foo@bar_baz.com foo@bar+baz.com foo@bar..com]
       invalid_addresses.each do |invalid_address|
-        let(:email) { invalid_address }
-        it { is_expected.to_not be_valid }
+        expect( build(:user, email: invalid_address) ).to_not be_valid
       end
     end
+  end
 
-    describe '重複しているメールアドレス' do
+    describe 'メールアドレスの一意性' do
       let!(:user) { create(:user) }
       it '重複しているメールアドレスは無効' do
         user = build(:user, email: 'user@example.com')
@@ -62,16 +62,22 @@ RSpec.describe User, type: :model do
     describe 'メールアドレスを小文字で保存する' do
       let!(:user) { create(:user, email: 'ORIGINAL@EXAMPLE.COM') }
       it 'メールアドレスを小文字で保存する' do
-        expect(user.reload.email).to eq 'original@example.com'
+        mixed_case_email = user.email
+        expect(user.reload.email).to eq mixed_case_email.downcase
       end
     end
-  end
 
-  #リファクタリング可能か？
   describe "パスワード" do
     let(:user) { build(:user, password: password, 
                        password_confirmation: password_confirmation) }
     subject{ user }
+
+    context "有効なパスワード" do
+      let(:password) { "a" * 7 + "A" + "1" + "?" }
+      let(:password_confirmation)  { "a" * 7 + "A" + "1" + "?" }
+      it { is_expected.to be_valid }
+    end
+
     context "ブランクの場合無効" do
       let(:password) { " " * 10 }
       let(:password_confirmation)  { " " * 10 }

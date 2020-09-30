@@ -7,4 +7,11 @@ RSpec.describe "AccessToUsers", type: :request do
       expect(response).to have_http_status 200
     end
   end
+
+  # describe 'ログインしていないユーザーのアクセス制限' do
+  #   it 'ユーザー一覧表示' do
+  #     get users_path
+  #     is_expected.to has_current_path login_path
+  #   end
+  # end
 end
