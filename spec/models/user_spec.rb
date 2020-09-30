@@ -52,7 +52,7 @@ RSpec.describe User, type: :model do
   end
 
     describe 'メールアドレスの一意性' do
-      let!(:user) { create(:user) }
+      let!(:user) { create(:user, email: 'user@example.com') }
       it '重複しているメールアドレスは無効' do
         user = build(:user, email: 'user@example.com')
         expect(user).to_not be_valid
