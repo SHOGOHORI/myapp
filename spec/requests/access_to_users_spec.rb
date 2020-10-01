@@ -60,7 +60,7 @@ RSpec.describe "AccessToUsers", type: :request do
 
     it '権限をWeb経由で編集' do
       expect(user).to_not be_admin
-      patch user_path(@other_user), params: {
+      patch user_path(user), params: {
                                     user: { password:              user.password,
                                             password_confirmation: user.password,
                                             admin: true } }
