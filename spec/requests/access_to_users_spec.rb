@@ -11,7 +11,7 @@ RSpec.describe "AccessToUsers", type: :request do
     end
   end
 
-  context 'ログイン無アクセス制限' do
+  describe 'ログイン無アクセス制限' do
     it 'ユーザー一覧' do
       get users_path
       expect(flash[:danger]).to include("ログインしてください")
@@ -30,13 +30,19 @@ RSpec.describe "AccessToUsers", type: :request do
       assert_redirected_to login_url
     end
   end
+  #何故かエラー出る
   context 'ログインあり別ユーザーへのアクセス制限' do
     before do
       log_in_as(user)
     end
     it 'ユーザー編集画面' do
       get edit_user_path(admin_user)
-      assert_redirected_to login_url
-    end   
+      assert_redirected_to root_url
+    end
+    it 'ユーザー編集' do
+      patch user_path(admin_user) 
+      assert_redirected_to root_url
+    end
   end
 end
+
