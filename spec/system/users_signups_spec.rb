@@ -12,10 +12,23 @@ RSpec.describe "UsersSignups", type: :system do
         click_button 'ユーザー新規作成'
       end
       it 'ユーザー登録成功' do
-        # flash[:success]).to include("ユーザー登録完了しました")
-        # follow_redirect!
-        expect(response).to redirect_to user_url
+        expect(flash[:success]).to include("ユーザー登録完了しました")
+        follow_redirect!
+        expect(response).to get user_path(User.last)
         expect(is_logged_in?).to be true
+      end
+    end
+
+    context '無効なユーザー登録' do
+      before do
+        visit signup_path
+        fill_in 'お名前', with: ''
+        fill_in 'メールアドレス', with: 'testuser@example'
+        fill_in 'パスワード', with: 'foo'
+        fill_in 'パスワード確認', with: 'bar'
+        click_button 'ユーザー新規作成'
+      end
+      it 'ユーザー登録失敗' do
       end
     end
   end

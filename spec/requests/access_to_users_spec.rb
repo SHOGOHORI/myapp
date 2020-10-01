@@ -44,7 +44,6 @@ RSpec.describe "AccessToUsers", type: :request do
     before do
       log_in_as(admin_user)
     end
-
     it 'ユーザー編集画面' do
       expect(page).to have_link 'ユーザー一覧', href: users_path
       get edit_user_path(admin_user)

@@ -5,7 +5,7 @@ ja:
         name: "お名前"
         email: "メールアドレス"
         password: "パスワード"
-        password_comfirmation: "パスワード確認"
+        Password confirmation: "パスワード確認"
     // views:
     //   pagination:
     //     Previous Label: "前"
