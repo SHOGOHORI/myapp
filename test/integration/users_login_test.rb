@@ -31,7 +31,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", user_path(@user), count: 0
   end
 
-  test "無効なログイン" do
+  test "無効なログイン" do #移行OK
     get login_path
     assert_template 'sessions/new'
     post login_path, params: { session: { email: "", password: "" } }
@@ -41,7 +41,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
 
-  test "有効なメールアドレスと無効なパスワード" do
+  test "有効なメールアドレスと無効なパスワード" do #移行OK
     get login_path
     assert_template 'sessions/new'
     post login_path, params: { session: { email:   @user.email,
