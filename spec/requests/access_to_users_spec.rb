@@ -39,22 +39,23 @@ RSpec.describe "AccessToUsers", type: :request do
       expect(response).to redirect_to login_url
     end
   end
-  #何故かエラー出る
-  context '権限なしユーザーの別ユーザーへのアクセス制限' do
+
+  describe '権限なしユーザーの別ユーザーへのアクセス制限' do
     before do
-      log_in_as(admin_user)
+      post login_path, params: { session: { email: user.email,
+                                            password: user.password,
+                                            remember_me: '1' } }
     end
     it 'ユーザー編集画面' do
-      expect(page).to have_link 'ユーザー一覧', href: users_path
       get edit_user_path(admin_user)
-      expect(flash[:danger]).to be_empty
+      expect(flash).to be_empty
       expect(response).to redirect_to root_url
     end
 
     it 'ユーザー編集' do
       patch user_path(admin_user), params: { user: { name: admin_user.name,
                                              email: admin_user.email } }
-      expect(flash[:danger]).to be_empty
+      expect(flash).to be_empty
       expect(response).to redirect_to root_url
     end
 
@@ -71,8 +72,23 @@ RSpec.describe "AccessToUsers", type: :request do
       expect {
         delete user_path(user)
       }.to change(User, :count).by(0)
-      expect(flash[:danger]).to be_empty
+      expect(flash).to be_empty
       expect(response).to redirect_to root_url
+    end
+  end
+
+  describe '権限ありユーザーのアクション' do
+    before do
+      post login_path, params: { session: { email: admin_user.email,
+                                            password: admin_user.password,
+                                            remember_me: '1' } }
+    end
+    it 'ユーザー削除' do
+      expect {
+        delete user_path(user)
+      }.to change(User, :count).by(-1)
+      expect(flash[:success]).to include("ユーザーを削除しました")
+      expect(response).to redirect_to users_url
     end
   end
 end
