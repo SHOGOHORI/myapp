@@ -11,11 +11,15 @@ RSpec.describe "UsersSignups", type: :system do
         fill_in 'パスワード確認', with: 'Aaaaaaaa1?'
         click_button 'ユーザー新規作成'
       end
-      it 'ユーザー登録成功' do
-        expect(flash[:success]).to include("ユーザー登録完了しました")
-        follow_redirect!
-        expect(response).to get user_path(User.last)
-        expect(is_logged_in?).to be true
+      subject { page }
+      it 'ユーザー登録後、フラッシュメッセージがでる' do
+        is_expected.to have_selector('.alert-success', text: "ユーザー登録完了しました")
+        is_expected.to have_current_path user_path(User.last)
+      end
+      it 'リロード後、フラッシュメッセージが消える' do
+        visit current_path
+        is_expected.to_not have_selector('.alert-success', text: "ユーザー登録完了しました")
+        is_expected.to have_link 'ユーザー一覧', href: users_path
       end
     end
 
@@ -28,7 +32,15 @@ RSpec.describe "UsersSignups", type: :system do
         fill_in 'パスワード確認', with: 'bar'
         click_button 'ユーザー新規作成'
       end
-      it 'ユーザー登録失敗' do
+      subject { page }
+      it 'ユーザー登録失敗/usersへとぶ' do
+        is_expected.to have_current_path users_path
+      end
+      it 'ユーザー登録失敗のフラッシュメッセージ' do
+        is_expected.to_not have_selector('.alert-danger', text: "お名前を入力してください")
+        is_expected.to_not have_selector('.alert-danger', text: "メールアドレスは不正な値です")
+        is_expected.to_not have_selector('.alert-danger', text: "Password confirmationとパスワードの入力が一致しません")
+        is_expected.to_not have_selector('.alert-danger', text: "パスワードは不正な値です")
       end
     end
   end

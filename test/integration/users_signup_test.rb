@@ -1,5 +1,5 @@
 require 'test_helper'
-
+#RSpecに移行済み
 class UsersSignupTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
