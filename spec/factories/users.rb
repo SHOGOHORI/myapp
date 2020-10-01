@@ -8,5 +8,8 @@ FactoryBot.define do
     trait :admin_user do
       admin { true }
     end
+    trait :login_user do
+      login { true }
+    end
   end
 end
