@@ -1,0 +1,22 @@
+require 'rails_helper'
+
+RSpec.describe "UsersSignups", type: :system do
+  describe 'ユーザーが新しいアカウントを作成する' do
+    context '有効なユーザー登録' do
+      before do
+        visit signup_path
+        fill_in 'お名前', with: 'testuser'
+        fill_in 'メールアドレス', with: 'testuser@example.com'
+        fill_in 'パスワード', with: 'Aaaaaaaa1?'
+        fill_in 'パスワード確認', with: 'Aaaaaaaa1?'
+        click_button 'ユーザー新規作成'
+      end
+      it 'ユーザー登録成功' do
+        # flash[:success]).to include("ユーザー登録完了しました")
+        # follow_redirect!
+        expect(response).to redirect_to user_url
+        expect(is_logged_in?).to be true
+      end
+    end
+  end
+end

@@ -15,33 +15,65 @@ RSpec.describe "AccessToUsers", type: :request do
     it 'ユーザー一覧' do
       get users_path
       expect(flash[:danger]).to include("ログインしてください")
-      assert_redirected_to login_url
+      expect(response).to redirect_to login_url
     end
 
     it 'ユーザー編集画面' do
       get edit_user_path(user)
       expect(flash[:danger]).to include("ログインしてください")
-      assert_redirected_to login_url
+      expect(response).to redirect_to login_url
     end
 
     it 'ユーザー編集' do
-      patch user_path(user) 
+      patch user_path(user), params: { user: { name: user.name,
+                                        email: user.email } }
       expect(flash[:danger]).to include("ログインしてください")
-      assert_redirected_to login_url
+      expect(response).to redirect_to login_url
+    end
+
+    it 'ユーザー削除' do
+      expect {
+        delete user_path(user)
+      }.to change(User, :count).by(0)
+      expect(flash[:danger]).to include("ログインしてください")
+      expect(response).to redirect_to login_url
     end
   end
   #何故かエラー出る
-  context 'ログインあり別ユーザーへのアクセス制限' do
+  context '権限なしユーザーの別ユーザーへのアクセス制限' do
     before do
-      log_in_as(user)
+      log_in_as(admin_user)
     end
+
     it 'ユーザー編集画面' do
+      expect(page).to have_link 'ユーザー一覧', href: users_path
       get edit_user_path(admin_user)
-      assert_redirected_to root_url
+      expect(flash[:danger]).to be_empty
+      expect(response).to redirect_to root_url
     end
+
     it 'ユーザー編集' do
-      patch user_path(admin_user) 
-      assert_redirected_to root_url
+      patch user_path(admin_user), params: { user: { name: admin_user.name,
+                                             email: admin_user.email } }
+      expect(flash[:danger]).to be_empty
+      expect(response).to redirect_to root_url
+    end
+
+    it '権限をWeb経由で編集' do
+      expect(user).to_not be_admin
+      patch user_path(@other_user), params: {
+                                    user: { password:              user.password,
+                                            password_confirmation: user.password,
+                                            admin: true } }
+      expect(user.reload).to_not be_admin
+    end
+
+    it 'ユーザー削除' do
+      expect {
+        delete user_path(user)
+      }.to change(User, :count).by(0)
+      expect(flash[:danger]).to be_empty
+      expect(response).to redirect_to root_url
     end
   end
 end

@@ -1,5 +1,5 @@
 require 'test_helper'
-
+#RSpecに移行途中
 class UsersControllerTest < ActionDispatch::IntegrationTest
 
   def setup
