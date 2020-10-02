@@ -39,6 +39,7 @@ group :test do
   gem 'selenium-webdriver',       '3.142.4'
   gem 'webdrivers', '~> 4.4', '>= 4.4.1'
   gem 'launchy', '~> 2.5'
+  gem 'rack_session_access', '~> 0.2.0'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
   gem 'minitest', '~> 5.14', '>= 5.14.2'
   gem 'minitest-reporters',       '1.3.8'

@@ -4,7 +4,12 @@ module TestHelper
     !session[:user_id].nil?
   end
 
-  # テストユーザーとしてログインする
+  # request用テストユーザーとしてログインする
+  def sign_in(user = FactoryBot.create(:user))
+    session[:user_id] = user.id
+  end
+
+  # feature用テストユーザーとしてログインする
   def log_in_as(user)
     visit login_path
     fill_in 'メールアドレス', with: user.email

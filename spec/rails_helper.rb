@@ -22,7 +22,7 @@ require 'rspec/rails'
 #
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 Dir[Rails.root.join("spec/support/helper/*.rb")].each { |f| require f }
-
+require "rack_session_access/capybara"
 RSpec.configure do |config|
   config.include TestHelper #作成したヘルパーを追加
 end
