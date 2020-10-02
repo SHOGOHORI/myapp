@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.feature "UsersIndices", type: :feature do
+RSpec.describe "UsersIndices", type: :system do
   scenario '権限なしユーザーのユーザー一覧' do
     user = create(:user)
     log_in_as(user)
-    visit users_url
+    visit users_path
     expect(page).to_not have_link '削除'
   end
 
@@ -12,7 +12,7 @@ RSpec.feature "UsersIndices", type: :feature do
     admin_user = create(:user, :admin_user)
     create_list(:user, 40)
     log_in_as(admin_user)
-    visit users_url
+    visit users_path
     expect(html).to include 'pagination'
     create_list(:user, 40)
     first_page_of_users = User.paginate(page: 1)

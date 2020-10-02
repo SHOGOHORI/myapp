@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Homes", type: :feature do
+RSpec.describe "Homes", type: :system do
   scenario 'homeにアクセス' do
     user = create(:user)
 

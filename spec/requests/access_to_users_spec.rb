@@ -92,4 +92,3 @@ RSpec.describe "AccessToUsers", type: :request do
     end
   end
 end
-
