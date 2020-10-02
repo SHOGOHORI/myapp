@@ -1,5 +1,5 @@
 require 'test_helper'
-
+#フレンドリーフォワーディング以外RSpecに移行済み
 class UsersEditTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true

@@ -1,5 +1,5 @@
 require 'test_helper'
-
+#RSpec移行済み
 class UsersIndexTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
