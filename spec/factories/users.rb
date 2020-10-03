@@ -4,6 +4,10 @@ FactoryBot.define do
     sequence(:email) { |n| "user_#{n}@example.com" }
     password { 'Aaaaaaaa1?' }
     password_confirmation { 'Aaaaaaaa1?' }
+    activated { true }
+    activated_at { Time.zone.now }
+  
+  
     
     trait :admin_user do
       admin { true }
