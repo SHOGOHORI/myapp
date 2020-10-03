@@ -16,6 +16,7 @@ gem 'jbuilder',   '2.9.1'
 gem 'bootsnap',   '1.4.5', require: false
 gem 'rake', '~> 13.0', '>= 13.0.1'
 gem 'execjs', '~> 2.7'
+gem 'mail-iso-2022-jp'
 
 group :development, :test do
   gem 'sqlite3', '1.4.1'
@@ -41,10 +42,10 @@ group :test do
   gem 'launchy', '~> 2.5'
   gem 'rack_session_access', '~> 0.2.0'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
-  gem 'minitest', '~> 5.14', '>= 5.14.2'
-  gem 'minitest-reporters',       '1.3.8'
-  gem 'guard',                    '2.16.2'
-  gem 'guard-minitest',           '2.4.6'
+  # gem 'minitest', '~> 5.14', '>= 5.14.2'
+  # gem 'minitest-reporters',       '1.3.8'
+  # gem 'guard',                    '2.16.2'
+  # gem 'guard-minitest',           '2.4.6'
 end
 
 group :production do

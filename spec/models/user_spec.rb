@@ -123,6 +123,6 @@ RSpec.describe User, type: :model do
 
   it "authenticated?ダイジェストがnilのユーザーにはfalseを返す" do
     user = build(:user)
-    expect(user.authenticated?('')).to eq false
+    expect(user.authenticated?(:remember, '')).to eq false
   end
 end

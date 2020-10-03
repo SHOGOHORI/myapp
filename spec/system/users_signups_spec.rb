@@ -12,15 +12,15 @@ RSpec.describe "UsersSignups", type: :system do
         click_button 'ユーザー新規作成'
       end
       subject { page }
-      it 'ユーザー登録後、フラッシュメッセージがでる' do
-        is_expected.to have_selector('.alert-success', text: "ユーザー登録完了しました")
-        is_expected.to have_current_path user_path(User.last)
-      end
-      it 'リロード後、フラッシュメッセージが消える' do
-        visit current_path
-        is_expected.to_not have_selector('.alert-success', text: "ユーザー登録完了しました")
-        is_expected.to have_link 'ユーザー一覧', href: users_path
-      end
+      # it 'ユーザー登録後、フラッシュメッセージがでる' do
+      #   is_expected.to have_selector('.alert-success', text: "ユーザー登録完了しました")
+      #   is_expected.to have_current_path user_path(User.last)
+      # end
+      # it 'リロード後、フラッシュメッセージが消える' do
+      #   visit current_path
+      #   is_expected.to_not have_selector('.alert-success', text: "ユーザー登録完了しました")
+      #   is_expected.to have_link 'ユーザー一覧', href: users_path
+      # end
     end
 
     context '無効なユーザー登録' do
