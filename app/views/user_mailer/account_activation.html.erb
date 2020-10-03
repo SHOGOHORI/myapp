@@ -1,5 +1,10 @@
-<h1>User#account_activation</h1>
+<h1>育児Q&A</h1>
+
+<p><%= @user.name %>様</p>
 
 <p>
-  <%= @greeting %>, find me in app/views/user_mailer/account_activation.html.erb
+育児Q&Aに登録するには、以下のリンクをクリックしてアカウントを有効化してください。:
 </p>
+
+<%= link_to "有効化", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) %>
