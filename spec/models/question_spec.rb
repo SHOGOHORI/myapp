@@ -42,10 +42,11 @@ RSpec.describe Question, type: :model do
     end
   end
 
-  describe '質問順' do
-    questions = create_list(:question, 40)
-    context '質問が最新順になっているか' do
-      it { expect(Question.first).to eq questions(:most_recent) }
-    end
+  scenario '質問が最新順になっているか' do
+    user = create(:user)
+    question = create(:question, user_id: user.id)
+    orange = create(:orange, user_id: user.id)
+    most_recent = create(:most_recent, user_id: user.id)
+    expect(Question.first).to eq most_recent
   end
 end
