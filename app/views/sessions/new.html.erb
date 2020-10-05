@@ -22,5 +22,6 @@
     <% end %>
 
     <p><%= link_to "ユーザー登録", signup_path %>はお済みですか？ </p>
+    <%= link_to 'ゲストユーザーとしてログインする', guest_path, method: :post, class: 'btn btn-guest-login' %>
   </div>
 </div>
