@@ -1,0 +1,18 @@
+portfolio ver.1
+
+内容：育児のQ＆Aサイト
+フレームワーク：Ruby on Rails6.0.3
+フロント：HTML、CSS(Bootstrap)、JavaScript
+サーバーサイド：Ruby2.7.1
+開発環境：Docker 19.3.12
+本番環境：Heroku
+テストフレームワーク：Minitest →　Rspec
+データベース：PostgreSQL1.4.1
+ソースコード管理：GitHub
+機能：　・記事一覧表示機能
+　　　　・記事詳細表示機能
+　　　　・管理ユーザー登録機能
+　　　　・管理ユーザーログイン機能
+　　　　・ページネーション機能
+　　　　・単体テスト機能
+　　　　・統合テスト機能
