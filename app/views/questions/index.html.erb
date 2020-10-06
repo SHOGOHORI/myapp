@@ -1,0 +1,17 @@
+  <div class="col-md-8">
+    <% if @user.questions.any? %>
+      <h3>Microposts (<%= @user.question.count %>)</h3>
+      <ol class="microposts">
+        <li id="question-<%= question.id %>">
+          <%= link_to gravatar_for(question.user, size: 50), question.user %>
+          <span class="user"><%= link_to question.user.name, question.user %></span>
+          <span class="content"><%= question.content %></span>
+          <span class="timestamp">
+          投稿 <%= time_ago_in_words(question.created_at) %> ago.
+          </span>
+        </li>
+      </ol>
+      <%= will_paginate @questions %>
+    <% end %>
+  </div>
+</div>

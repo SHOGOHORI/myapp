@@ -42,11 +42,19 @@ RSpec.describe Question, type: :model do
     end
   end
 
-  scenario '質問が最新順になっているか' do
+  it '質問が最新順になっているか' do
     user = create(:user)
     question = create(:question, user_id: user.id)
     orange = create(:orange, user_id: user.id)
     most_recent = create(:most_recent, user_id: user.id)
     expect(Question.first).to eq most_recent
+  end
+
+  it 'ユーザーを削除すると関連する質問も削除される' do
+    user = create(:user)
+    question = create(:question, user_id: user.id)
+    expect {
+            user.destroy
+            }.to change(Question, :count).by(-1)
   end
 end
