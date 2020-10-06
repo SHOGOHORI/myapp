@@ -16,6 +16,8 @@ portfolio ver.1
 　　　　・記事返信機能
 　　　　・管理ユーザー登録機能　OK
 　　　　・管理ユーザーログイン機能　OK
+　　　　・ゲストユーザーログイン機能　OK
+　　　　・ゲストユーザーテスト機能
 　　　　・ページネーション機能　OK(gem will_paginate)
 　　　　・単体テスト機能　OK(RSpec)
 　　　　・統合テスト機能　OK(RSpec)
