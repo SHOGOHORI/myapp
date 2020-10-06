@@ -59,7 +59,7 @@ module SessionsHelper
   end
   
   #ゲストユーザーとしてログイン
-  def guest_user
+  def guest_user?
     current_user == User.find_by(email: 'test@example.com')
   end
 

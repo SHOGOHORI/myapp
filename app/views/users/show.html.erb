@@ -6,7 +6,7 @@
       <h1>
         <%= @user.name %>
       </h1>
-      <% if @user == current_user && !guest_user %>
+      <% if @user == current_user && !guest_user? %>
         <%= link_to "プロフィールを変更する", edit_user_path(@user) %>
       <% end %>
     </section>

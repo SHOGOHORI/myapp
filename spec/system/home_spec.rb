@@ -16,7 +16,6 @@ RSpec.describe "Homes", type: :system do
     expect(page).to have_link '概要', href: about_path
     expect(page).to have_link 'ユーザー一覧', href: users_path
     click_link 'アカウント'
-    expect(page).to have_link '設定', href: edit_user_path(user)
     expect(page).to have_link 'プロフィール', href: user_path(user)
     expect(page).to have_link 'ログアウト', href: logout_path
   end
