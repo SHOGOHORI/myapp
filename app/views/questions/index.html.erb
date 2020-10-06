@@ -1,9 +1,7 @@
 <% provide(:title, '質問一覧') %>
-<div class="col-md-8">
-  <h3>質問一覧</h3>
-  <%= will_paginate %>
-  <ul class="questions">
+<h3>質問一覧</h3>
+<%= will_paginate @questions %>
+<ul class="questions">
     <%= render @questions %>
-  </ul>
-  <%= will_paginate %>
-</div>
+</ul>
+<%= will_paginate @questions %>

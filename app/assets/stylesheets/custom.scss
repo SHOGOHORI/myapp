@@ -157,9 +157,9 @@ input {
   position: relative;
   padding: 0.5em 1.4em;
   text-decoration: none;
-  background: #668ad8;/*ボタン色*/
+  background:#f582ae;/*ボタン色*/
   color: #FFF;
-  border-bottom: solid 5px #36528c;/*ボタン色より暗めに*/
+  border-bottom: solid 5px #57032d;/*ボタン色より暗めに*/
   border-right: solid 5px #5375bd;/*ボタン色より暗めに*/
 }
 
@@ -276,6 +276,37 @@ input {
   width: auto;
   margin-left: 0;
 }
+/* Questions index */
+
+.card{
+  padding: 0.2em 0.5em;
+  margin: 2em 0;
+  color: #565656;
+  background: #ffeaea;
+  box-shadow: 0px 0px 0px 10px #ffeaea;
+  border: dashed 2px #ffc3c3;
+  border-radius: 8px;
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+  }
+}
+
+.card-title{
+  font-size: large;
+  font-weight: 900;
+}
+
+
+
+ul {
+  list-style: none;
+}
 
 /* Users index */
 
@@ -287,4 +318,28 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+
+/*ページネーション*/
+/*ページネーション自体のデザイン*/
+.pagenation{
+
+}
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
 }
