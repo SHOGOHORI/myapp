@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_10_07_083211) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["user_id", "question_id", "created_at"], name: "index_answers_on_user_id_and_question_id_and_created_at"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 

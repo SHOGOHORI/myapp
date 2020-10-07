@@ -1,18 +1,25 @@
-<%= link_to question_path(@question), class: 'question-box' do %>
-  <div class="card" style="width: 100rem;" >
-    <div class="card-body">
-      <div id="question-<%= @question.id %>">
-        <%= link_to gravatar_for(@question.user, size: 50), @question.user %>
-        <span class="user"><%= link_to @question.user.name, @question.user %></span>
-        <br>
-        <h4 class="card-title"><%= @question.title %></h4>
-        <br>
-        <span class="card-text">本文：<%= @question.content %></span>
-        <br>
-        <span class="timestamp">
-         <%= time_ago_in_words(@question.created_at) %>前
-        </span>
-      </div>
+<div class="card" style="width: 100rem;" >
+  <div class="card-body">
+    <div id="question-<%= @question.id %>">
+      <h4>質問</h4>
+      <%= link_to gravatar_for(@question.user, size: 50), @question.user %>
+      <span class="user"><%= link_to @question.user.name, @question.user %></span>
+      <br>
+      <h4 class="card-title"><%= @question.title %></h4>
+      <br>
+      <span class="card-text">本文：<%= @question.content %></span>
+      <br>
+      <span class="timestamp">
+       <%= time_ago_in_words(@question.created_at) %>前
+      </span>
     </div>
   </div>
-<% end %>
+</div>
+<ul class="answers">
+  <%= render 'answer' %>
+</ul>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render 'form'  %>
+  </div>
+</div>

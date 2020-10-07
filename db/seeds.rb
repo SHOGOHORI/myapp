@@ -35,10 +35,17 @@ User.create!(name:  name,
     activated_at: Time.zone.now)
 end
 
-# ユーザーの一部を対象にマイクロポストを生成する
+# ユーザーの一部を対象にQ&Aを生成する
 users = User.order(:created_at).take(6)
 50.times do
   content = Faker::Lorem.sentence(word_count: 30)
   title = Faker::Lorem.sentence(word_count: 3)
   users.each { |user| user.questions.create!(content: content,title: title) }
 end
+
+shogo = User.first
+content = Faker::Lorem.sentence(word_count: 30)
+question = Question.first
+Answer.create(content: content,
+              user_id: shogo.id,
+              question_id: question.id)
