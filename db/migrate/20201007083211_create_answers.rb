@@ -7,6 +7,6 @@ class CreateAnswers < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    add_index :questions, [:user_id, :created_at]
+    add_index :answers, [:user_id, :question_id, :created_at]
   end
 end
