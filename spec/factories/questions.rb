@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :question ,class: Question do
-    title { "title" }
-    content { "MyText" }
+    sequence(:title) { |n| "title#{n}" }
+    sequence(:content) { |n| "MyText#{n}" }
     user_id { nil }
     created_at { 3.years.ago }
   end
