@@ -1,5 +1,6 @@
 <% provide(:title, '質問一覧') %>
 <h3>質問一覧</h3>
+
 <%= will_paginate @questions %>
 <ul class="questions">
     <%= render @questions %>

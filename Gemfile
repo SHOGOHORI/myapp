@@ -18,6 +18,7 @@ gem 'bootsnap',   '1.4.5', require: false
 gem 'rake', '~> 13.0', '>= 13.0.1'
 gem 'execjs', '~> 2.7'
 gem 'mail-iso-2022-jp'
+gem 'ransack'
 
 group :development, :test do
   gem 'sqlite3', '1.4.1'
