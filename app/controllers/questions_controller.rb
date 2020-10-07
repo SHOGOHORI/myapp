@@ -10,14 +10,14 @@ class QuestionsController < ApplicationController
   end
 
   def new
-
+    @question = Question.new
   end
 
   def create
     @question = current_user.questions.build(question_params)
     if @question.save
       flash[:success] = "投稿しました"
-      redirect_to questions_url
+      redirect_to question_url(@question)
     else
       render 'new'
     end
@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:content)
+    params.require(:question).permit(:content, :title)
   end
 
 end
