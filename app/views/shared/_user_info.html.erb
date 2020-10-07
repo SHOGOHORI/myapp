@@ -1,2 +1,7 @@
-<%= link_to gravatar_for(current_user), current_user %>
-<h1><%= link_to current_user.name, current_user %></h1>
+<div class="card-user" >
+  <div class="card-body">
+    <%= link_to gravatar_for(current_user), current_user %>
+    <br>
+    <h1><%= link_to current_user.name, current_user %></h1>
+  </div>
+</div>

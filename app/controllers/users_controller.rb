@@ -49,6 +49,12 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  # 試作feedの定義
+  # 完全な実装は次章の「ユーザーをフォローする」を参照
+  def feed
+    Question.where.paginate(page: params[:page])
+  end
+
 
   private
 
