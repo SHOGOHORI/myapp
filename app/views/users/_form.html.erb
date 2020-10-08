@@ -1,13 +1,8 @@
     <br>
     <%= form_with(model: @user, local: true) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-
+      
       <p class="image_explanation">ユーザー画像</p>
-      <%  if @user.image.attached? %>
-        <%= image_tag display_image(@user.image), class: 'user-image' %>
-        <br>
-        <%= link_to "削除", @user.image.purge %>
-      <% end %>
       <span class="image">
         <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
       </span>

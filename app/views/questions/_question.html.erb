@@ -1,7 +1,11 @@
 <div class="card" style="width: 100rem;" >
     <div class="card-body">
       <li id="question-<%= question.id %>">
-        <%= link_to gravatar_for(question.user, size: 50), question.user %>
+        <%  if question.user.image.attached? %>
+          <%= image_tag display_image(question.user.image), size: 50, class: 'user-image' %>
+        <% else %>
+          <%= link_to gravatar_for(question.user, size: 50), question.user %>
+        <% end %>
         <span class="user"><%= link_to question.user.name, question.user %></span>
         <%= link_to question_path(question), class: 'question-box' do %>
           <br>

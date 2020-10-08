@@ -4,7 +4,7 @@ portfolio ver.1
 フレームワーク：Ruby on Rails6.0.3
 フロント：HTML、CSS(Bootstrap)、JavaScript
 サーバーサイド：Ruby2.7.1
-開発環境：Docker 19.3.12
+開発環境：Docker 19.3.12　→　ローカル環境
 本番環境：Heroku
 テストフレームワーク：Minitest →　Rspec
 データベース：PostgreSQL1.4.1
@@ -14,7 +14,11 @@ portfolio ver.1
 　　　　・記事投稿機能　OK
 　　　　・記事検索機能
 　　　　・記事返信機能　OK
-　　　　・画像投稿機能　OK
+　　　　・画像投稿機能　
+　　　　・管理ユーザ登録機能　OK
+　　　　・管理ユーザログイン機能　OK
+　　　　・管理ユーザ編集機能　OK
+　　　　・ユーザー画像設定機能　OK
 　　　　・管理ユーザー登録機能　OK
 　　　　・管理ユーザーログイン機能　OK
 　　　　・ゲストユーザーログイン機能　OK
