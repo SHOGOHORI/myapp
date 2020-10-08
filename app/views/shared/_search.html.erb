@@ -1,0 +1,4 @@
+<%= search_form_for @search, questions_path do |f| %>
+  <%= f.text_field :content, class: 'form-control' %>
+  <%= f.submit ("検索"), class: "btn-square-slant" %>
+<% end %>

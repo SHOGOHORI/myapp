@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answers = Answer.where(question_id: @question.id)
+    @answer = current_user.answers.build if logged_in?
   end
 
   def new
