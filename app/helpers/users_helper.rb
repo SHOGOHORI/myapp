@@ -6,4 +6,9 @@ module UsersHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
+
+  # 表示用のリサイズ済み画像を返す
+  def display_image(image)
+    image.variant(resize_to_limit: [100, 100])
+  end
 end

@@ -1,6 +1,10 @@
 <div class="card-user" >
   <div class="card-body">
-    <%= link_to gravatar_for(current_user), current_user %>
+    <%  if current_user.image.attached? %>
+      <%= image_tag display_image(current_user.image), class: 'user-image' %>
+    <% else %>
+      <%= link_to gravatar_for(current_user), current_user %>
+    <% end %>
     <br>
     <h1><%= link_to current_user.name, current_user %></h1>
   </div>

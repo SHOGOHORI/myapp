@@ -1,5 +1,9 @@
 <li>
-  <%= gravatar_for user, size: 50 %>
+  <%  if user.image.attached? %>
+    <%= image_tag display_image(user.image), size: 50, class: 'user-image' %>
+  <% else %>
+    <%= gravatar_for user, size: 50 %>
+  <% end %>
   <%= link_to user.name, user %>
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "削除", user, method: :delete,

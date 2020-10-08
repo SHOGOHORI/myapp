@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'rails',      '6.0.3'
+gem 'active_storage_validations'
+gem 'image_processing'
+gem 'mini_magick'
 gem 'rails-i18n', '~> 6.0'
 gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 gem 'faker', '~> 2.14'

@@ -56,7 +56,6 @@ class UsersController < ApplicationController
     Question.where.paginate(page: params[:page])
   end
 
-
   private
 
   def user_params

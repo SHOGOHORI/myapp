@@ -13,6 +13,10 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[!-\/:-@\[-`{-~])[!-~]{10,40}\z/
   has_secure_password
   validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
+  validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
+                                      message: "有効な画像を投稿してください。" },
+                                      size:         { less_than: 5.megabytes,
+                                      message: "5MB以下の画像を投稿してください。" }
 
   class << self
     # 渡された文字列のハッシュ値を返す

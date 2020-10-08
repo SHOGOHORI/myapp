@@ -3,7 +3,7 @@
   <aside class="col-md-4">
     <section class="user_info">
       <%  if @user.image.attached? %>
-        <%= image_tag @user.image %>
+        <%= image_tag display_image(@user.image), class: 'user-image' %>
       <% else %>
         <%= gravatar_for @user %>
       <% end %>
