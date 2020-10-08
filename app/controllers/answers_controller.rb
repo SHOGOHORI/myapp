@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
 
   def create
     @answer = current_user.answers.build(answer_params)
-    @question = Question.find(params[:id])
+    @question = Question.find(params[:question_id])
     @answer.question_id = @question.id
     if @answer.save
       flash[:success] = "回答を投稿しました"
