@@ -8,6 +8,9 @@
       <h4 class="card-title"><%= @question.title %></h4>
       <br>
       <span class="card-text">本文：<%= @question.content %></span>
+      <% if @question.image.attached? %>
+        <%= image_tag display_image(@question.image)  %>
+      <% end %>
       <br>
       <span class="timestamp">
        <%= time_ago_in_words(@question.created_at) %>前

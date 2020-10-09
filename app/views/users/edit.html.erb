@@ -4,13 +4,13 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%  if @user.image.attached? %>
-      <%= image_tag display_image(@user.image), class: 'user-image' %>
+    <%  if @user.avatar.attached? %>
+      <%= image_tag display_avatar(@user.avatar), class: 'user-image' %>
       <br>
-      <%= link_to "削除", @user.image.purge %>
+      <%= link_to "削除", @user.avatar.purge %>
     <% end %>
     <%= render 'form', btn_name: "プロフィール更新" %>
-    <%  if @user.image.attached? %>
+    <%  if @user.avatar.attached? %>
 
     <% else %>
       <div class="gravatar_edit">

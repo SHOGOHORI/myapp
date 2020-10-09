@@ -1,6 +1,6 @@
 <li>
-  <%  if user.image.attached? %>
-    <%= image_tag display_image(user.image), size: 50, class: 'user-image' %>
+  <%  if user.avatar.attached? %>
+    <%= image_tag display_avatar(user.avatar), size: 50, class: 'user-image' %>
   <% else %>
     <%= gravatar_for user, size: 50 %>
   <% end %>

@@ -2,8 +2,8 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <%  if @user.image.attached? %>
-        <%= image_tag display_image(@user.image), class: 'user-image' %>
+      <%  if @user.avatar.attached? %>
+        <%= image_tag display_avatar(@user.avatar), class: 'user-image' %>
       <% else %>
         <%= gravatar_for @user %>
       <% end %>

@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = current_user.questions.build(question_params)
+    @question.image.attach(params[:question][:image])
     if @question.save
       flash[:success] = "投稿しました"
       redirect_to question_url(@question)
@@ -35,7 +36,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:content, :title)
+    params.require(:question).permit(:content, :title, :image)
   end
 
   def correct_user

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
-  has_one_attached :image
+  has_one_attached :avatar
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
@@ -13,7 +13,7 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[!-\/:-@\[-`{-~])[!-~]{10,40}\z/
   has_secure_password
   validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
-  validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
+  validates :avatar,   content_type: { in: %w[image/jpeg image/gif image/png],
                                       message: "有効な画像を投稿してください。" },
                                       size:         { less_than: 5.megabytes,
                                       message: "5MB以下の画像を投稿してください。" }

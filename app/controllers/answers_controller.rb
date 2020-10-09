@@ -6,6 +6,7 @@ class AnswersController < ApplicationController
     @answer = current_user.answers.build(answer_params)
     @question = Question.find(params[:question_id])
     @answer.question_id = @question.id
+    @answer.image.attach(params[:answer][:image])
     if @answer.save
       flash[:success] = "回答を投稿しました"
       redirect_to question_path(@question)
@@ -24,7 +25,7 @@ class AnswersController < ApplicationController
   private
 
   def answer_params
-    params.require(:answer).permit(:content,:question_id)
+    params.require(:answer).permit(:content, :question_id, :image)
   end
 
   def correct_user

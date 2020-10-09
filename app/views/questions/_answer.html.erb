@@ -7,6 +7,9 @@
         <span class="user"><%= link_to answer.user.name, answer.user %></span>
           <br>
           <span class="card-text">本文：<%= answer.content %></span>
+          <% if answer.image.attached?  %>
+            <%= image_tag display_image(answer.image) %>
+          <% end %>
           <br>
           <span class="timestamp">
            <%= time_ago_in_words(answer.created_at) %>前
