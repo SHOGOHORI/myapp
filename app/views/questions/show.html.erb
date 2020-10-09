@@ -1,15 +1,16 @@
+<h4>質問</h4>
 <div class="card" style="width: 100rem;" >
   <div class="card-body">
     <div id="question-<%= @question.id %>">
-      <h4>質問</h4>
       <%= link_to gravatar_for(@question.user, size: 50), @question.user %>
       <span class="user"><%= link_to @question.user.name, @question.user %></span>
       <br>
       <h4 class="card-title"><%= @question.title %></h4>
       <br>
       <span class="card-text">本文：<%= @question.content %></span>
+      <br>
       <% if @question.image.attached? %>
-        <%= image_tag display_image(@question.image)  %>
+        <%= image_tag post_image(@question.image)  %>
       <% end %>
       <br>
       <span class="timestamp">

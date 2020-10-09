@@ -1,14 +1,15 @@
-<div class="card" style="width: 100rem;" >
-  <div class="card-body">
-    <% @answers.each do |answer| %>
+<h4>回答</h4>
+<div class="card-body">
+  <% @answers.each do |answer| %>
+    <div class="card" style="width: 100rem;" >
       <li id="answer-<%= answer.id %>">
-        <h4>回答</h4>
         <%= link_to gravatar_for(answer.user, size: 50), answer.user %>
         <span class="user"><%= link_to answer.user.name, answer.user %></span>
           <br>
           <span class="card-text">本文：<%= answer.content %></span>
+          <br>
           <% if answer.image.attached?  %>
-            <%= image_tag display_image(answer.image) %>
+            <%= image_tag post_image(answer.image) %>
           <% end %>
           <br>
           <span class="timestamp">
@@ -19,6 +20,6 @@
                                              data: { confirm: "削除しますか？" } %>
           <% end %>
       </li>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
