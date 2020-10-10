@@ -1,6 +1,5 @@
 class QuestionsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  before_action :correct_user,   only: :destroy
 
   def index
     @questions = Question.paginate(page: params[:page])
@@ -8,6 +7,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    # @answers = Answer.where(question_id: @question.id)
     @answers = @question.answers.recently
     @answer = current_user.answers.build(question: @question) if logged_in?
   end
@@ -18,7 +18,6 @@ class QuestionsController < ApplicationController
 
   def create
     @question = current_user.questions.build(question_params)
-    @question.image.attach(params[:question][:image])
     if @question.save
       flash[:success] = "投稿しました"
       redirect_to question_url(@question)
@@ -28,20 +27,13 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @question.destroy
-    flash[:success] = "削除しました"
-    redirect_to questions_url
+
   end
 
   private
 
   def question_params
-    params.require(:question).permit(:content, :title, :image)
-  end
-
-  def correct_user
-    @question = current_user.questions.find_by(id: params[:id])
-    redirect_to root_url if @question.nil?
+    params.require(:question).permit(:content, :title)
   end
 
 end
