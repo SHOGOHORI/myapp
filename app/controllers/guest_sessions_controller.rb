@@ -5,7 +5,7 @@ class GuestSessionsController < ApplicationController
     @user = User.find_by(email: 'test@example.com')
     log_in(@user)
     flash[:success] = 'ゲストユーザーでログインしました'
-    redirect_to user_path(@user)
+    redirect_to root_path
   end
 
   def log_in(user)
