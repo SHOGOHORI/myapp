@@ -87,6 +87,24 @@ footer {
   color: #777;
 }
 
+/* nonlogin home */
+.non-login{
+  background-image: url("../images/house.jpg");
+}
+
+.login {
+  width: 550px;
+  height: 500px;
+  padding: 20px 0px;
+  margin : 0 0 0 auto;
+  background: -webkit-repeating-linear-gradient(-45deg, #f4f9ff, #f4f9ff 3px, #eaf4ff 3px, #eaf4ff 6px);/*ストライプ*/
+  background: repeating-linear-gradient(-45deg, #f4f9ff, #f4f9ff 3px, #eaf4ff 3px, #eaf4ff 6px);/*ストライプ*/
+  color: #000000;/*文字色*/
+  .home-logo{
+    margin : 0 auto;
+  }
+}
+
 /* miscellaneous */
 
 .debug_dump {
