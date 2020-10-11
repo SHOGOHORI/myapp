@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-  
+  before_action :set_search
+
+  def set_search
+    @q = Question.ransack(params[:q])
+    @search_questions = @q.result(distinct: true)
+  end
+
   private
   
   # ログイン済みユーザーかどうか確認

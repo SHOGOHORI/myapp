@@ -3,6 +3,13 @@
   <div class="container">
   <%= link_to image_tag("home_logo.png", alt: "logo", height: "50px", id: "logo"),
                       root_path %>
+
+      <%= search_form_for @q do |f| %>
+        <%= f.label :content_cont %>
+        <%= f.text_field :content_cont %>
+        <%= f.submit ("検索する") %>
+      <% end %>
+
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
