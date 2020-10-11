@@ -34,7 +34,6 @@ textarea {
 }
 
 .container {
-  marigin-top: 200px;
 }
 
 /* typography */
@@ -74,7 +73,7 @@ header{
 
 .navbar-right{
   position:absolute;
-  bottom:10px;
+  height: 60px;
   right:100px
 }
 
@@ -89,20 +88,38 @@ footer {
 
 /* nonlogin home */
 .non-login{
-  background-image: url("../images/house.jpg");
+  background: image-url('house.jpg');
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .login {
   width: 550px;
   height: 500px;
-  padding: 20px 0px;
-  margin : 0 0 0 auto;
+  float: right;
+  margin-top : 200px;
+  margin-right: 50px;
+  position : relative;
   background: -webkit-repeating-linear-gradient(-45deg, #f4f9ff, #f4f9ff 3px, #eaf4ff 3px, #eaf4ff 6px);/*ストライプ*/
   background: repeating-linear-gradient(-45deg, #f4f9ff, #f4f9ff 3px, #eaf4ff 3px, #eaf4ff 6px);/*ストライプ*/
   color: #000000;/*文字色*/
-  .home-logo{
-    margin : 0 auto;
+  .home-logo {
+    margin : 0 auto
   }
+  h1{
+    float: left;
+    padding-left: 50px;
+  }
+}
+
+.question-index{
+  display: block;
+  padding-top: 900px;
 }
 
 /* miscellaneous */

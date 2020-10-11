@@ -1,34 +1,38 @@
-<% if logged_in? %>
- <header class="navbar navbar-fixed-top navbar-light" >
-   <div class="container">
-   <%= link_to image_tag("logo.png", alt: "logo", height: "100px", id: "logo"),
-                       root_path %>
-     <nav>
-       <ul class="nav navbar-nav navbar-right">
-           <li><%= link_to "ユーザー一覧", users_path %></li>
-           <li class="dropdown">
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               Q&A <b class="caret"></b>
-             </a>
-             <ul class="dropdown-menu">
-               <li><%= link_to "一覧", questions_path %></li>
-               <li><%= link_to "投稿", new_question_path %></li>
-             </ul>
-           </li>
-           <li class="dropdown">
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               アカウント <b class="caret"></b>
-             </a>
-             <ul class="dropdown-menu">
-               <li><%= link_to "プロフィール", current_user %></li>
-               <li class="divider"></li>
-               <li>
-                 <%= link_to "ログアウト", logout_path, method: :delete %>
-               </li>
-             </ul>
-           </li>
-       </ul>
-     </nav>
-   </div>
- </header>
-<% end %>
+
+<header class="navbar navbar-fixed-top navbar-light" >
+  <div class="container">
+  <%= link_to image_tag("home_logo.png", alt: "logo", height: "50px", id: "logo"),
+                      root_path %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li><%= link_to "ユーザー一覧", users_path %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Q&A <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "一覧", questions_path %></li>
+              <li><%= link_to "投稿", new_question_path %></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              アカウント <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "プロフィール", current_user %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "ログアウト", logout_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+         <% else %>
+          <li><%= link_to "ユーザー登録",  signup_path, class:"fas fa-sign-in-alt" %></li>
+          <li><%= link_to "ログイン", login_path, class:"fas fa-key" %></li>
+         <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -14,4 +14,15 @@
   <div class="non-login">
     <%= render 'sessions/login' %>
   </div>
+  <div class="question-index">
+  <h1>質問一覧</h1>
+    <%= will_paginate @questions %>
+      <ul class="questions">
+        <section class="question_index">
+          <%= render 'questions/question' %>
+        </section>
+      </ul>
+    <%= will_paginate @questions %>
+  </div>
+
 <% end %>
