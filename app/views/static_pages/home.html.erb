@@ -5,24 +5,21 @@
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
-      <section class="question_index">
-        <%= render 'shared/question_index' %>
-      </section>
     </aside>
   </div>
 <% else %>
   <div class="non-login">
     <%= render 'sessions/login' %>
   </div>
+<% end %>
   <div class="question-index">
   <h1>質問一覧</h1>
-    <%= will_paginate @questions %>
+    <%= will_paginate @questions, remote: true %>
       <ul class="questions">
         <section class="question_index">
           <%= render partial: 'questions/question', collection: @questions %>
         </section>
       </ul>
-    <%= will_paginate @questions %>
+    <%= will_paginate @questions, remote: true %>
   </div>
 
-<% end %>
