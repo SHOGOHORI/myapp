@@ -23,6 +23,7 @@ gem 'rake', '~> 13.0', '>= 13.0.1'
 gem 'execjs', '~> 2.7'
 gem 'mail-iso-2022-jp'
 gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'sqlite3', '1.4.1'
