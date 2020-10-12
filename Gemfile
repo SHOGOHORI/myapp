@@ -13,7 +13,7 @@ gem 'faker-japanese'
 gem 'will_paginate', '~> 3.3'
 gem 'bootstrap-will_paginate', '~> 1.0'
 gem 'bootstrap-sass', '3.4.1'
-gem 'puma',       '4.3.4'
+gem 'puma'
 gem 'sass-rails', '5.1.0'
 gem 'webpacker', '~> 5.2', '>= 5.2.1'
 gem 'turbolinks', '5.2.0'
@@ -22,7 +22,7 @@ gem 'bootsnap',   '1.4.5', require: false
 gem 'rake', '~> 13.0', '>= 13.0.1'
 gem 'execjs', '~> 2.7'
 gem 'mail-iso-2022-jp'
-gem 'ransack'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 
 group :development, :test do
   gem 'sqlite3', '1.4.1'

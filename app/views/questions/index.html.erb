@@ -1,9 +1,16 @@
 <% provide(:title, '質問一覧') %>
 
-    <h3>質問一覧</h3>
-
-     <%= will_paginate @questions %>
-    <ul class="questions">
-        <%= render @questions %>
-    </ul>
-    <%= will_paginate @questions %>
+<h3>質問一覧</h3>
+<% if @serch_questions %>
+  <%= will_paginate @serch_questions %>
+  <ul class="questions">
+      <% render @serch_questions %>
+  </ul>
+  <%= will_paginate @serch_questions %>
+<% else %>
+  <%= will_paginate @questions %>
+  <ul class="questions">
+      <% render @questions %>
+  </ul>
+  <%= will_paginate @questions %>
+<% end %>

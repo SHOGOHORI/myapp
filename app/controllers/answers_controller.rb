@@ -8,9 +8,11 @@ class AnswersController < ApplicationController
     @answer.question_id = @question.id
     @answer.image.attach(params[:answer][:image])
     if @answer.save
-      redirect_to question_path(@question), success: "回答を投稿しました"
+      flash[:success] = "回答を投稿しました"
+      redirect_to question_path(@question)
     else
-      render question_path(@question), danger: "回答に失敗しました"
+      flash[:success] = "回答に失敗しました"
+      redirect_to question_path(@question)
     end
   end
 
