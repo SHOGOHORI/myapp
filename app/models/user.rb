@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
              format: { with: VALID_EMAIL_REGEX },
              uniqueness: true
+  validates :introduction, length: { maximum: 200 }
   VALID_PASSWORD_REGEX = /\A(?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)(?=.*?[!-\/:-@\[-`{-~])[!-~]{10,40}\z/
   has_secure_password
   validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }, allow_nil: true

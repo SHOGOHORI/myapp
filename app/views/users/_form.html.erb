@@ -14,11 +14,15 @@
       <%= f.email_field :email, class: 'form-control' %>
 
       <%= f.label :password, "パスワード" %>
-      <p class="password_explanation">英大文字＋英小文字＋数字＋記号混じりで10桁以上</p>
+      <p class="explanation">英大文字＋英小文字＋数字＋記号混じりで10桁以上</p>
       <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.label :password_confirmation, "パスワード確認" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.label :introduction, "自己紹介" %>
+      <p class="explanation">200字以内</p>
+      <%= f.text_area :introduction, class: 'form-control' %>
 
       <%= f.submit btn_name, class: "btn-square-slant" %>
     <% end %>

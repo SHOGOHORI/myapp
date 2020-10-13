@@ -8,7 +8,7 @@ RSpec.describe "UsersLogins", type: :system do
     fill_in 'パスワード', with: user.password
     check 'このコンピューターを記憶しますか？'
     click_button 'ログイン'
-    expect(current_path).to eq user_path(user)
+    expect(current_path).to eq root_path
     visit current_path
     click_link 'アカウント'
     click_link 'ログアウト'

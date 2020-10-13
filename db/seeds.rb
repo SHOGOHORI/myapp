@@ -11,6 +11,7 @@ User.create!(name:  "shogohori",
   email: "shogo.hori.1988@gmail.com",
   password:              "Aaaaaaaa1?",
   password_confirmation: "Aaaaaaaa1?",
+  introduction: "宜しくおねがいします。",
   admin: true,
   activated: true,
   activated_at: Time.zone.now)
@@ -19,6 +20,7 @@ User.create!(name:  "shogohori",
     email: "test@example.com",
     password:              "Aaaaaaaa1?",
     password_confirmation: "Aaaaaaaa1?",
+    introduction: "ゲストユーザーです。",
     activated: true,
     activated_at: Time.zone.now)
 
@@ -26,11 +28,13 @@ User.create!(name:  "shogohori",
 99.times do |n|
 name  = Faker::Name.name
 email = "example-#{n+1}@railstutorial.org"
+introduction = Faker::Lorem.sentence(word_count: 3)
 password = "Aaaaaaaa1?"
 User.create!(name:  name,
     email: email,
     password:              password,
     password_confirmation: password,
+    introduction: introduction,
     activated: true,
     activated_at: Time.zone.now)
 end
