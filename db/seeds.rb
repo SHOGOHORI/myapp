@@ -27,7 +27,7 @@ User.create!(name:  "shogohori",
 # 追加のユーザーをまとめて生成する
 99.times do |n|
 name  = Faker::Name.name
-email = "example-#{n+1}@railstutorial.org"
+email = "example-#{n+1}@example.org"
 introduction = Faker::Lorem.sentence(word_count: 3)
 password = "Aaaaaaaa1?"
 User.create!(name:  name,
