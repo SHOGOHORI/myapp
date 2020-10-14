@@ -2,7 +2,7 @@
 <% if !logged_in? %>
   <div class="home-explanation">
     <p>あなたの育児の困った!を救うQ&Aサイト</p>
-    <h1>SukuSuku</h1>
+    <%= image_tag 'SUKUSUKU.png', height: "100px" %>
   </div>
   <div class="non-login">
     <%= render 'sessions/login' %>
