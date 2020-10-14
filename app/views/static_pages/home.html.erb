@@ -1,28 +1,29 @@
 <!-- < img src="/assets/psychedelic1.jpg" class="img-responsive"> -->
-<% if logged_in? %>
-  <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
-        <%= render 'shared/user_info' %>
-      </section>
-    </aside>
-  </div>
-<% else %>
+<% if !logged_in? %>
   <div class="home-explanation">
-    <p>あなたの育児の困ったを救うQ&Aサイト</p>
-    <h1>SukuSku</h1>
+    <p>あなたの育児の困った!を救うQ&Aサイト</p>
+    <h1>SukuSuku</h1>
   </div>
   <div class="non-login">
     <%= render 'sessions/login' %>
   </div>
 <% end %>
-  <div class="question-index">
-    <%= will_paginate @questions, remote: true %>
-      <ul class="questions">
-        <section class="question_index">
-          <%= render partial: 'questions/question', collection: @questions %>
-        </section>
-      </ul>
-    <%= will_paginate @questions, remote: true %>
+  <div class="question-container">
+    <div class="question-category">
+      <%= render partial: 'questions/category' %>
+    </div>
+    <div class="question-index">
+      <%= will_paginate @questions, remote: true %>
+        <ul class="questions">
+          <section class="question_index">
+            <div class="card" style="width: 100%;" >
+              <div class="card-body">
+                <%= render partial: 'questions/question', collection: @questions %>
+              </div>
+            </div>
+          </section>
+        </ul>
+      <%= will_paginate @questions, remote: true %>
+    </div>
   </div>
 

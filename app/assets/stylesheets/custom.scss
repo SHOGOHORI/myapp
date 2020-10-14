@@ -34,6 +34,8 @@ textarea {
 }
 
 .container {
+  width: 100%;
+  padding: 0;
 }
 
 /* typography */
@@ -53,8 +55,11 @@ h1 {
 
 header{
   background-color: #001858;
-  display: table;
   width: 100%;
+  height: 60px;
+  padding: 0 10%;
+  position: fixed;
+  top:0;
 }
 
 #logo {
@@ -70,6 +75,18 @@ header{
   &:hover {
   color: $light-gray;
   text-decoration: none;
+  }
+}
+
+a.post-btn {
+  margin: 15px 40px;
+  width: 200px;
+  color: #fff;
+  height: 20px;
+  background-color: #eb6100;
+  :hover {   
+    color: #fff;
+    background: #f56500;
   }
 }
 
@@ -103,13 +120,14 @@ header{
   }
 }
 
-.navbar-right{
-  float: right;
-  position:absolute;
-  height: 100%;
-  right:100px
+.nav navbar-nav{
+  margin-bottom: 0;
+  .navbar-right{
+    float: right;
+    height: 60px;
+    right: 100px;
+  }
 }
-
 
 .fas{
   height: 100%;
@@ -124,22 +142,27 @@ footer {
   color: #777;
 }
 
-/* nonlogin home */
+/*home */
 .non-login{
   background: image-url('house.jpg');
-  height: 700px;
+  height: 800px;
   width: 100%;
   background-size: cover;
-  display: block;
-  position: absolute;
-  top: 60px;
-  left: 0;
 }
 
 .home-explanation{
-  position: absolute;
-  top: 100px;
-  left: 0;
+  text-align: left;
+  position: absolute;    
+  top: 40%;
+  left: 10%;
+  color: brown;
+  p{
+    font-size: 20px;
+  }
+  h1{
+    text-align: left;
+    font-size: 50px;
+  }
 }
 
 .login {
@@ -156,12 +179,20 @@ footer {
     padding: 10px 30px;
   }
 }
-
-.question-index{
-  display: block;
-  padding-top: 700px;
+.question-container{
+  display: inline-block;
+  margin: 10px 5%;
+  .question-category{
+    margin-top: 100px;
+    float: left;
+    width: 15%;
+    font-size: 20px;
+  }
+  .question-index{
+    float: right;
+    width: 80%;
+  }
 }
-
 
 
 /* miscellaneous */
