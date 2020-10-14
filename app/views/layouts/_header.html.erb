@@ -1,7 +1,5 @@
-
-<header class="navbar navbar-fixed-top navbar-light" >
-  <div class="container">
-    <ul class="nav navbar-nav navbar-left">
+<header>
+  <ul class="nav navbar-nav navbar-left">
       <%= link_to image_tag("home_logo.png", alt: "logo", height: "60px", id: "logo"),
                           root_path %>
       <li class="search-form">
@@ -14,7 +12,9 @@
       </li>
       <% if logged_in? %>
         <li>
-          <%= link_to '質問を投稿する', new_question_path, class: 'btn post-btn' %>
+          <%= link_to  new_question_path, class: 'btn post-btn' do %>
+            <p>質問を投稿する</p>
+          <% end %>
         </li>
       <% end %>
   </ul>
@@ -40,5 +40,4 @@
          <% end %>
       </ul>
     </nav>
-  </div>
 </header>

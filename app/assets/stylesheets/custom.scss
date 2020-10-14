@@ -13,7 +13,6 @@ $light-gray: #fff;
 /* universal */
 
 body {
-  padding-top: 60px;
   font-family: Amatic SC;
   background-color: #fef6e4;
 }
@@ -35,6 +34,7 @@ textarea {
 
 .container {
   width: 100%;
+  margin-top: 50px;
   padding: 0;
 }
 
@@ -56,10 +56,12 @@ h1 {
 header{
   background-color: #001858;
   width: 100%;
-  height: 60px;
+  height: 50px;
   padding: 0 10%;
+  margin: 0;
   position: fixed;
   top:0;
+  z-index:10;
 }
 
 #logo {
@@ -69,7 +71,6 @@ header{
   color: $light-gray;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
   padding-bottom: 9px;
   font-weight: bold;
   &:hover {
@@ -78,23 +79,29 @@ header{
   }
 }
 
-a.post-btn {
-  margin: 15px 40px;
+.post-btn {
+  margin: 10px 40px;
+  padding: 10px;
   width: 200px;
-  color: #fff;
   height: 20px;
   background-color: #eb6100;
-  :hover {   
+  p{
     color: #fff;
-    background: #f56500;
+    position: absolute;
+    top: 5px;
+    left: 50px;
   }
+}
+
+.post-btn:hover {
+  background: #f56500;
 }
 
 .search-form{
   display: table-cell;
   vertical-align: middle;
   margin-left: 60px;
-  padding-top: 15px;
+  padding-top: 10px;
   box-sizing: border-box;
   input[type="text"]{
   border: 1px solid #999;
@@ -120,15 +127,6 @@ a.post-btn {
   }
 }
 
-.nav navbar-nav{
-  margin-bottom: 0;
-  .navbar-right{
-    float: right;
-    height: 60px;
-    right: 100px;
-  }
-}
-
 .fas{
   height: 100%;
 }
@@ -137,6 +135,7 @@ a.post-btn {
 
 footer {
   margin-top: 45px;
+  margin-left: 100px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777;
@@ -181,7 +180,7 @@ footer {
 }
 .question-container{
   display: inline-block;
-  margin: 10px 5%;
+  margin: 60px 5%;
   .question-category{
     margin-top: 100px;
     float: left;
@@ -192,6 +191,10 @@ footer {
     float: right;
     width: 80%;
   }
+}
+
+.particular-case{
+  border-bottom: dashed 2px #ffc3c3;
 }
 
 
