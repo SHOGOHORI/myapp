@@ -183,12 +183,6 @@ footer {
 .question-container{
   display: inline-block;
   margin: 30px 5%;
-  .question-category{
-    margin-top: 100px;
-    float: left;
-    width: 200px;
-    font-size: 20px;
-  }
   .non-question{
     margin: 20px;
     padding-left: 500px;
@@ -427,6 +421,9 @@ input {
   font-size: large;
   font-weight: 900;
 }
+
+/* カテゴリー検索 */
+
 .card-category{
   padding: 0.1em 0.5em;
   margin: 0.1em 0;
@@ -437,7 +434,10 @@ input {
   border-radius: 10px;/*角の丸み*/
 }
 
-
+.question-category{
+  float: left;
+  width: 200px;
+}
 
 ul {
   list-style: none;
@@ -480,6 +480,10 @@ ul {
 }
 
 /*ユーザープロフィール*/
+.user-show{
+  margin: 30px 5%;
+}
+
 .card-user{
   width: 200px;
   height: 200px;
@@ -498,8 +502,7 @@ ul {
 }
 
 .area {
-  width: 500px;
-  margin: auto;
+  width: 65%;
   flex-wrap: wrap;
   display: flex;
 }

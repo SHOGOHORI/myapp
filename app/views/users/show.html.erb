@@ -1,5 +1,5 @@
 <% provide(:title, "#{@user.name} | ") %>
-<div class="row">
+<div class="user-show">
   <aside class="col-md-4">
     <section class="user_info">
         <div class="card-user">
@@ -18,20 +18,23 @@
           <% end %>
         </div>
     </section>
+    <div class="question-category">
+      <%= render partial: 'questions/category' %>
+    </div>
   </aside>
   <div class="area">
     <input type="radio" name="tab_name" id="tab1" checked>
     <label class="tab_class" for="tab1">質問(<%= @user.questions.count %>件)</label>
     <div class="content_class">
-      <ul class="questions">
-        <section class="question_index">
-          <div class="card" style="width: 100%;" >
-            <div class="card-body">
+        <ul class="questions">
+          <section class="question_index">
+            <div class="card" style="width: 100%;" >
+              <div class="card-body">
               <%= render partial: 'questions/question', collection: @user.questions %>
+              </div>
             </div>
-          </div>
-        </section>
-      </ul>
+          </section>
+        </ul>
     </div>
     <input type="radio" name="tab_name" id="tab2" >
     <label class="tab_class" for="tab2">回答(<%= @answer_question.count %>件)</label>
@@ -39,11 +42,12 @@
         <ul class="questions">
           <section class="question_index">
             <div class="card" style="width: 100%;" >
+              <div class="card-body">
               <%= render partial: 'questions/question', collection: @answer_question %>
+              </div>
             </div>
           </section>
         </ul>
-      </div>
     </div>
   </div>
 </div>

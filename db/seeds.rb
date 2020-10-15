@@ -44,8 +44,8 @@ users = User.order(:created_at).take(6)
 50.times do
   content = Faker::Lorem.sentence(word_count: 30)
   title = Faker::Lorem.sentence(word_count: 3)
-  category = "教育"
-  users.each { |user| user.questions.create!(content: content,title: title,category: category) }
+  category = ["教育", "健康", "食事", "安全", "ママの悩み"]
+  users.each { |user| user.questions.create!(content: content,title: title,category: category.sample) }
 end
 
 shogo = User.first
