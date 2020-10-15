@@ -12,6 +12,12 @@
       <br>
       <h4 class="card-title"><%= @question.title %></h4>
       <br>
+      <%= search_form_for @q do |f| %>
+        <%= f.hidden_field :category_eq, value: @question.category %>
+        <%= button_tag type: 'submit', class: 'card-category' do %>
+          <i><%= @question.category %></i>
+        <% end %>
+      <% end %>
       <span class="card-text">本文：<%= @question.content %></span>
       <br>
       <% if @question.image.attached? %>
@@ -32,8 +38,12 @@
 <ul class="answers">
   <%= render 'answer' %>
 </ul>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= render 'answer_form'  %>
+<% if !logged_in? %>
+  <h3><%= link_to "ログイン", login_path %>して回答する。</h3>
+<% else %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= render 'answer_form'  %>
+    </div>
   </div>
-</div>
+<% end %>

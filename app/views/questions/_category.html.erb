@@ -1,25 +1,35 @@
 <h4>カテゴリー検索</h4>
 <div class="card" style="width: 100%;" >
-    <div class="card-body">
+  <div class="card-body">
       <%= search_form_for @q do |f| %>
         <%= f.hidden_field :category_eq, value: '教育' %>
-        <%= f.submit '教育' %>
+        <%= button_tag type: 'submit', class: 'card-category' do %>
+          <i>教育</i>
+        <% end %>
       <% end %>
       <%= search_form_for @q do |f| %>
         <%= f.hidden_field :category_eq, value: '健康' %>
-        <%= f.submit '健康' %>
+        <%= button_tag type: 'submit', class: 'card-category' do %>
+          <i>健康</i>
+        <% end %>
       <% end %>
       <%= search_form_for @q do |f| %>
         <%= f.hidden_field :category_eq, value: '食事' %>
-        <%= f.submit '食事' %>
+        <%= button_tag type: 'submit', class: 'card-category' do %>
+          <i>食事</i>
+        <% end %>
       <% end %>
       <%= search_form_for @q do |f| %>
         <%= f.hidden_field :category_eq, value: '安全' %>
-        <%= f.submit '安全' %>
+        <%= button_tag type: 'submit', class: 'card-category' do %>
+          <i>安全</i>
+        <% end %>
       <% end %>
       <%= search_form_for @q do |f| %>
         <%= f.hidden_field :category_eq, value: 'ママの悩み' %>
-        <%= f.submit 'ママの悩み' %>
+        <%= button_tag type: 'submit', class: 'card-category' do %>
+          <i>ママの悩み</i>
+        <% end %>
       <% end %>
     </div>
 </div>

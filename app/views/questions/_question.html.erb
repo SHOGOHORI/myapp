@@ -2,10 +2,12 @@
   <li id="question-<%= question.id %>">
     <%= link_to question_path(question), class: 'question-box' do %>
       <h4 class="card-title"><%= question.title %></h4>
-      <br>
-      <h7 class="card-category"><%= question.category %></h7>
-      <br>
-      <br>
+      <%= search_form_for @q do |f| %>
+        <%= f.hidden_field :category_eq, value: question.category %>
+        <%= button_tag type: 'submit', class: 'card-category' do %>
+          <i><%= question.category %></i>
+        <% end %>
+      <% end %>
       <span class="card-text">本文：<%= question.content %></span>
       <br>
       <span class="timestamp">
