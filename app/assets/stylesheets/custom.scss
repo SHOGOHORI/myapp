@@ -135,16 +135,18 @@ header{
 
 footer {
   margin-top: 45px;
-  margin-left: 100px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777;
+  small{
+    margin-left: 100px;
+  }
 }
 
 /*home */
 .non-login{
   background: image-url('house.jpg');
-  height: 800px;
+  height: 900px;
   width: 100%;
   background-size: cover;
 }
@@ -180,16 +182,25 @@ footer {
 }
 .question-container{
   display: inline-block;
-  margin: 60px 5%;
+  margin: 30px 5%;
   .question-category{
     margin-top: 100px;
     float: left;
-    width: 15%;
+    width: 200px;
     font-size: 20px;
+  }
+  .non-question{
+    margin: 20px;
+    padding-left: 500px;
+    text-align: center;
+    float: right;
   }
   .question-index{
     float: right;
     width: 80%;
+    h3{
+      text-align: center;
+    }
   }
 }
 
@@ -415,6 +426,15 @@ input {
 .card-title{
   font-size: large;
   font-weight: 900;
+}
+.card-category{
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  font-weight: bold;
+  color: #6091d3;/*文字色*/
+  background: #FFF;
+  border: solid 3px #6091d3;/*線*/
+  border-radius: 10px;/*角の丸み*/
 }
 
 

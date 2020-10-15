@@ -1,10 +1,24 @@
 <% provide(:title, '質問一覧 | ') %>
-
-<h3>質問一覧</h3>
-
-
-  <%= will_paginate @search_questions %>
-  <ul class="questions">
-    <%= render @search_questions %>
-  </ul>
-  <%= will_paginate @search_questions %>
+<div class="question-container">
+  <div class="question-category">
+    <%= render partial: 'category' %>
+  </div>
+  <% if @search_questions.count == 0 %>
+    <h3 class="non-question">質問がありません。</h3>
+  <% else %>
+    <div class="question-index">
+      <h3>検索結果　<%= @search_questions.count %>件</h3>
+      <%= will_paginate @search_questions, remote: true %>
+        <ul class="questions">
+          <section class="question_index">
+            <div class="card" style="width: 100%;" >
+              <div class="card-body">
+                <%= render partial: 'question', collection: @search_questions %>
+              </div>
+            </div>
+          </section>
+        </ul>
+      <%= will_paginate @search_questions, remote: true %>
+    </div>
+  <% end %>
+</div>

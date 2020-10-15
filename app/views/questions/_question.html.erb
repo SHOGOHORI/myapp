@@ -1,8 +1,10 @@
 <div class="particular-case">
   <li id="question-<%= question.id %>">
     <%= link_to question_path(question), class: 'question-box' do %>
-      <br>
       <h4 class="card-title"><%= question.title %></h4>
+      <br>
+      <h7 class="card-category"><%= question.category %></h7>
+      <br>
       <br>
       <span class="card-text">本文：<%= question.content %></span>
       <br>

@@ -36,7 +36,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:content, :title, :image)
+    params.require(:question).permit(:content, :title, :category, :image)
   end
 
   def correct_user

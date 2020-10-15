@@ -1,10 +1,25 @@
-<h3>カテゴリー</h3>
+<h4>カテゴリー検索</h4>
 <div class="card" style="width: 100%;" >
     <div class="card-body">
-    <p>教育</p>
-    <p>健康</p>
-    <p>食事</p>
-    <p>安全</p>
-    <p>ママの悩み</p>
+      <%= search_form_for @q do |f| %>
+        <%= f.hidden_field :category_eq, value: '教育' %>
+        <%= f.submit '教育' %>
+      <% end %>
+      <%= search_form_for @q do |f| %>
+        <%= f.hidden_field :category_eq, value: '健康' %>
+        <%= f.submit '健康' %>
+      <% end %>
+      <%= search_form_for @q do |f| %>
+        <%= f.hidden_field :category_eq, value: '食事' %>
+        <%= f.submit '食事' %>
+      <% end %>
+      <%= search_form_for @q do |f| %>
+        <%= f.hidden_field :category_eq, value: '安全' %>
+        <%= f.submit '安全' %>
+      <% end %>
+      <%= search_form_for @q do |f| %>
+        <%= f.hidden_field :category_eq, value: 'ママの悩み' %>
+        <%= f.submit 'ママの悩み' %>
+      <% end %>
     </div>
 </div>

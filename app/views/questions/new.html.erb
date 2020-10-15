@@ -1,4 +1,4 @@
-<% provide(:title, 'Q&A投稿 | ') %>
+<% provide(:title, '質問投稿 | ') %>
 <h1>投稿</h1>
 
 <div class="row">
@@ -7,6 +7,14 @@
       <%= render 'error_messages', object: f.object %>
       <%= f.label :title, "タイトル" %>
       <%= f.text_field :title, class: 'form-control' %>
+
+      <%= f.label :category, "カテゴリー" %>
+      <%= f.select :category, [["教育", "教育"], 
+                              ["健康", "健康"], 
+                              ["食事", "食事"], 
+                              ["安全", "安全"],
+                              ["ママの悩み", "ママの悩み"]], 
+                              include_blank: "選択して下さい" %>
 
       <%= f.label :content, "本文" %>
       <%= f.text_area :content, class: 'form-control' %>
