@@ -1,0 +1,33 @@
+<%= form_with(model: @question, local: true) do |f| %>
+  <%= render 'error_messages', object: f.object %>
+  <%= f.label :title, "タイトル" %>
+  <%= f.text_field :title, class: 'form-control' %>
+
+  <%= f.label :category, "カテゴリー" %>
+  <%= f.select :category, [["教育", "教育"], 
+                          ["健康", "健康"], 
+                          ["食事", "食事"], 
+                          ["安全", "安全"],
+                          ["ママの悩み", "ママの悩み"]], 
+                          include_blank: "選択して下さい" %>
+
+    <%= f.label :content, "本文" %>
+    <%= f.text_area :content, class: 'form-control' %>
+
+    <span class="image">
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+    </span>
+
+  <%= f.submit "投稿する", class: "btn-square-slant" %>
+<% end %>
+
+
+<script type="text/javascript">
+$("#question_image").bind("change", function() {
+var size_in_megabytes = this.files[0].size/1024/1024;
+if (size_in_megabytes > 5) {
+  alert("5MB以上のファイルは添付できません。");
+  $("#question_image").val("");
+}
+});
+</script>

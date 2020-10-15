@@ -2,19 +2,47 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <%  if @user.avatar.attached? %>
-        <%= image_tag display_avatar(@user.avatar), class: 'user-image' %>
-      <% else %>
-        <%= gravatar_for @user %>
-      <% end %>
-      <h1>
-        <%= @user.name %>
-      </h1>
-      <%= @user.introduction %>
-      <br>
-      <% if @user == current_user && !guest_user? %>
-        <%= link_to "プロフィールを変更する", edit_user_path(@user) %>
-      <% end %>
+        <div class="card-user">
+          <%  if @user.avatar.attached? %>
+            <%= image_tag display_avatar(@user.avatar), class: 'user-image' %>
+          <% else %>
+            <%= gravatar_for @user %>
+          <% end %>
+          <h1>
+            <%= @user.name %>
+          </h1>
+          <%= @user.introduction %>
+          <br>
+          <% if @user == current_user && !guest_user? %>
+            <%= link_to "プロフィールを変更する", edit_user_path(@user) %>
+          <% end %>
+        </div>
     </section>
   </aside>
-</div>
+  <div class="area">
+    <input type="radio" name="tab_name" id="tab1" checked>
+    <label class="tab_class" for="tab1">質問(<%= @user.questions.count %>件)</label>
+    <div class="content_class">
+      <ul class="questions">
+        <section class="question_index">
+          <div class="card" style="width: 100%;" >
+            <div class="card-body">
+              <%= render partial: 'questions/question', collection: @user.questions %>
+            </div>
+          </div>
+        </section>
+      </ul>
+    </div>
+    <input type="radio" name="tab_name" id="tab2" >
+    <label class="tab_class" for="tab2">回答(<%= @user.answers.count %>件)</label>
+    <div class="content_class">
+      <div class="content_class">
+        <ul class="questions">
+          <section class="question_index">
+            <div class="card" style="width: 100%;" >
+            </div>
+          </section>
+        </ul>
+      </div>
+    </div>
+  </div>

@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :correct_user,   only: [:destroy, :edit, :update]
 
   def index
     @questions = Question.paginate(page: params[:page])
@@ -30,7 +30,21 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     flash[:success] = "削除しました"
-    redirect_to questions_url
+    redirect_back_or questions_url
+  end
+
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    if @question.update(question_params)
+      flash[:success] = "質問を更新しました"
+      redirect_to @question
+    else
+      render 'edit'
+    end
   end
 
   private
