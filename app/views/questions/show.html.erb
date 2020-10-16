@@ -4,11 +4,11 @@
   <div class="card" style="width: 100rem;" >
     <div class="card-body">
       <div id="question-<%= @question.id %>">
-        <% if @question.user.avatar.attached? %>
-          <%= image_tag display_avatar(@question.user.avatar), class: 'user-image' %>
-        <% else %>
-          <%= link_to gravatar_for(@question.user, size: 50), @question.user %>
-        <% end %>
+          <%  if @question.user.avatar.attached? %>
+            <%= link_to image_tag(@question.user.avatar, size: 50), class: 'user-image' %>
+          <% else %>
+            <%= link_to image_tag('user_avatar.png', size: 50), @question.user %>
+          <% end %>
         <span class="user"><%= link_to @question.user.name, @question.user %></span>
         <br>
         <h4 class="card-title"><%= @question.title %></h4>
