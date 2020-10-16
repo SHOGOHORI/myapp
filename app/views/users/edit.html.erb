@@ -9,13 +9,5 @@
       <%= link_to "削除", @user.avatar.purge %>
     <% end %>
     <%= render 'form', btn_name: "プロフィール更新" %>
-    <%  if @user.avatar.attached? %>
-
-    <% else %>
-      <div class="gravatar_edit">
-        <%= gravatar_for @user %>
-        <a href="https://gravatar.com/emails" target="_blank" rel="noopener">gravatarを変更する</a>
-      </div>
-    <% end %>
   </div>
 </div>
