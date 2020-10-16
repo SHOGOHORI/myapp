@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 /* mixins, variables, etc. */
 $light-gray: #fff;
 
@@ -242,15 +243,6 @@ aside {
   }
 }
 
-.gravatar, .user-image {
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit {
-  margin-top: 15px;
-}
-
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -406,11 +398,6 @@ input {
   box-shadow: 0px 0px 0px 10px #ffeaea;
   border: dashed 2px #ffc3c3;
   border-radius: 8px;
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
-  }
   .timestamp {
     color: $gray-light;
     display: block;
@@ -481,7 +468,8 @@ ul {
 
 /*ユーザープロフィール*/
 .user-show{
-  margin: 30px 5%;
+  margin: 40px 5%;
+  height: 100%;
 }
 
 .card-user{
@@ -494,6 +482,9 @@ ul {
   box-shadow: 0px 0px 0px 10px #fef6e4;
   border: dashed 2px #ffc3c3;
   border-radius: 8px;
+  h1{
+    margin: 10px 0;
+  }
 }
 
 .area {

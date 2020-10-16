@@ -6,7 +6,9 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         Password confirmation: "パスワード確認"
-    // views:
-    //   pagination:
-    //     Previous Label: "前"
-    //     Next Label: "次"
+      question:
+        title: "タイトル"
+        category: "タグ"
+        content: "本文"
+      answer:
+        content: "本文"

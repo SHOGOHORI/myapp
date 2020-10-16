@@ -38,14 +38,14 @@
   </div>
   <div class="answer-show">
     <ul class="answers">
-      <%= render 'answer' %>
+      <%= render 'questions/answer' %>
     </ul>  
     <% if !logged_in? %>
       <h3>　　<%= link_to "ログイン", login_path %>して回答する。</h3>
     <% else %>
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <%= render 'answer_form'  %>
+          <%= render 'questions/answer_form'  %>
         </div>
       </div>
     <% end %>
