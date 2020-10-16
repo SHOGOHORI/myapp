@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def set_search
     @q = Question.ransack(params[:q])
-    @search_questions = @q.result.paginate(page: params[:page], per_page: params[:per_page])
+    @search_questions = @q.result.paginate(page: params[:page], per_page: 10)
   end
 
   private

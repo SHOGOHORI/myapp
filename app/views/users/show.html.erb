@@ -2,21 +2,7 @@
 <div class="user-show">
   <aside class="col-md-4">
     <section class="user_info">
-        <div class="card-user">
-          <%  if @user.avatar.attached? %>
-            <%= image_tag display_avatar(@user.avatar), class: 'user-image' %>
-          <% else %>
-            <%= gravatar_for @user %>
-          <% end %>
-          <h1>
-            <%= @user.name %>
-          </h1>
-          <%= @user.introduction %>
-          <br>
-          <% if @user == current_user && !guest_user? %>
-            <%= link_to "プロフィールを変更する", edit_user_path(@user) %>
-          <% end %>
-        </div>
+      <%= render partial: 'shared/user_info' %>
     </section>
     <div class="question-category">
       <%= render partial: 'questions/category' %>
@@ -24,30 +10,34 @@
   </aside>
   <div class="area">
     <input type="radio" name="tab_name" id="tab1" checked>
-    <label class="tab_class" for="tab1">質問(<%= @user.questions.count %>件)</label>
+    <label class="tab_class" for="tab1">質問(<%= @user_questions.count %>件)</label>
     <div class="content_class">
+      <%= will_paginate @user_questions %>
         <ul class="questions">
           <section class="question_index">
             <div class="card" style="width: 100%;" >
               <div class="card-body">
-              <%= render partial: 'questions/question', collection: @user.questions %>
+              <%= render partial: 'questions/question', collection: @user_questions %>
               </div>
             </div>
           </section>
         </ul>
+      <%= will_paginate @user_questions %>
     </div>
     <input type="radio" name="tab_name" id="tab2" >
-    <label class="tab_class" for="tab2">回答(<%= @questions.count %>件)</label>
+    <label class="tab_class" for="tab2">回答(<%= @user_answers.count %>件)</label>
       <div class="content_class">
-        <ul class="questions">
-          <section class="question_index">
-            <div class="card" style="width: 100%;" >
-              <div class="card-body">
-              <%= render partial: 'questions/question', collection: @questions %>
+        <%= will_paginate @user_answers %>
+          <ul class="questions">
+            <section class="question_index">
+              <div class="card" style="width: 100%;" >
+                <div class="card-body">
+                <%= render partial: 'questions/question', collection: @user_answers %>
+                </div>
               </div>
-            </div>
-          </section>
-        </ul>
+            </section>
+          </ul>
+        <%= will_paginate @user_answers %>
     </div>
   </div>
 </div>

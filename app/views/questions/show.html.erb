@@ -1,49 +1,53 @@
 <% provide(:title, "#{@question.title} | ") %>
-<h3>質問</h3>
-<div class="card" style="width: 100rem;" >
-  <div class="card-body">
-    <div id="question-<%= @question.id %>">
-      <% if @question.user.avatar.attached? %>
-        <%= image_tag display_avatar(@question.user.avatar), class: 'user-image' %>
-      <% else %>
-        <%= link_to gravatar_for(@question.user, size: 50), @question.user %>
-      <% end %>
-      <span class="user"><%= link_to @question.user.name, @question.user %></span>
-      <br>
-      <h4 class="card-title"><%= @question.title %></h4>
-      <br>
-      <%= search_form_for @q do |f| %>
-        <%= f.hidden_field :category_eq, value: @question.category %>
-        <%= button_tag type: 'submit', class: 'card-category' do %>
-          <i><%= @question.category %></i>
+<div class="question-show">
+  <h2>質問</h2>
+  <div class="card" style="width: 100rem;" >
+    <div class="card-body">
+      <div id="question-<%= @question.id %>">
+        <% if @question.user.avatar.attached? %>
+          <%= image_tag display_avatar(@question.user.avatar), class: 'user-image' %>
+        <% else %>
+          <%= link_to gravatar_for(@question.user, size: 50), @question.user %>
         <% end %>
-      <% end %>
-      <span class="card-text">本文：<%= @question.content %></span>
-      <br>
-      <% if @question.image.attached? %>
-        <%= image_tag post_image(@question.image)  %>
-      <% end %>
-      <br>
-      <span class="timestamp">
-       <%= time_ago_in_words(@question.created_at) %>前
-      </span>
-      <% if current_user == @question.user %>
-        <%= link_to "削除", @question, method: :delete,
-                                         data: { confirm: "削除しますか？" } %>
-        <%= link_to "編集", edit_question_path(@question) %>
-      <% end %>
+        <span class="user"><%= link_to @question.user.name, @question.user %></span>
+        <br>
+        <h4 class="card-title"><%= @question.title %></h4>
+        <br>
+        <%= search_form_for @q do |f| %>
+          <%= f.hidden_field :category_eq, value: @question.category %>
+          <%= button_tag type: 'submit', class: 'card-category' do %>
+            <i><%= @question.category %></i>
+          <% end %>
+        <% end %>
+        <span class="card-text"><%= @question.content %></span>
+        <br>
+        <% if @question.image.attached? %>
+          <%= image_tag post_image(@question.image)  %>
+        <% end %>
+        <br>
+        <span class="timestamp">
+         <%= time_ago_in_words(@question.created_at) %>前
+        </span>
+        <% if current_user == @question.user %>
+          <%= link_to "削除", @question, method: :delete,
+                                           data: { confirm: "削除しますか？" } %>
+          <%= link_to "編集", edit_question_path(@question) %>
+        <% end %>
+      </div>
     </div>
+  </div>
+  <div class="answer-show">
+    <ul class="answers">
+      <%= render 'answer' %>
+    </ul>  
+    <% if !logged_in? %>
+      <h3>　　<%= link_to "ログイン", login_path %>して回答する。</h3>
+    <% else %>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <%= render 'answer_form'  %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
-<ul class="answers">
-  <%= render 'answer' %>
-</ul>
-<% if !logged_in? %>
-  <h3><%= link_to "ログイン", login_path %>して回答する。</h3>
-<% else %>
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <%= render 'answer_form'  %>
-    </div>
-  </div>
-<% end %>

@@ -1,7 +1,7 @@
 <% if @answers.count == 0 %>
-  <h3>まだ回答は有りません</h3>
+  <h3>まだ回答は有りません。</h3>
 <% else %>
-  <h3>回答</h3>
+  <h2>回答</h2>
   <div class="card-body">
    <% @answers.each do |answer| %>
      <div class="card" style="width: 100rem;" >
@@ -9,7 +9,7 @@
          <%= link_to gravatar_for(answer.user, size: 50), answer.user %>
          <span class="user"><%= link_to answer.user.name, answer.user %></span>
            <br>
-           <span class="card-text">本文：<%= answer.content %></span>
+           <span class="card-text"><%= answer.content %></span>
            <br>
            <% if answer.image.attached?  %>
              <%= image_tag post_image(answer.image) %>

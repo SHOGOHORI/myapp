@@ -12,12 +12,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     redirect_to root_url and return unless @user.activated?
+    @user_questions = @user.questions.paginate(page: params[:page], per_page: 10)
     query = "SELECT questions.* 
              FROM questions
              JOIN answers 
              ON questions.id=answers.question_id
              WHERE answers.user_id = #{@user.id}"
-    @questions = Question.find_by_sql(query)
+    @user_answers = Question.paginate_by_sql(query, page: params[:page], per_page: 10)
   end
 
   def new

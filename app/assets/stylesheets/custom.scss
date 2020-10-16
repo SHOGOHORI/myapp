@@ -134,7 +134,7 @@ header{
 /* footer */
 
 footer {
-  margin-top: 45px;
+  margin: 45px 0;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777;
@@ -535,4 +535,15 @@ input:checked + .tab_class {
  
 input:checked + .tab_class + .content_class {
   display: block;
+}
+
+/*質問詳細*/
+
+.question-show{
+  margin: 30px 5%;
+}
+
+.answer-show h3{
+  margin: 50px;
+  text-align: center;
 }
