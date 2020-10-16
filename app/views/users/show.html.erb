@@ -37,13 +37,13 @@
         </ul>
     </div>
     <input type="radio" name="tab_name" id="tab2" >
-    <label class="tab_class" for="tab2">回答(<%= @answer_question.count %>件)</label>
+    <label class="tab_class" for="tab2">回答(<%= @questions.count %>件)</label>
       <div class="content_class">
         <ul class="questions">
           <section class="question_index">
             <div class="card" style="width: 100%;" >
               <div class="card-body">
-              <%= render partial: 'questions/question', collection: @answer_question %>
+              <%= render partial: 'questions/question', collection: @questions %>
               </div>
             </div>
           </section>

@@ -2,19 +2,18 @@
   <li id="question-<%= question.id %>">
     <%= link_to question_path(question), class: 'question-box' do %>
       <h4 class="card-title"><%= question.title %></h4>
-      <%= search_form_for @q do |f| %>
-        <%= f.hidden_field :category_eq, value: question.category %>
-        <%= button_tag type: 'submit', class: 'card-category' do %>
-          <i><%= question.category %></i>
-        <% end %>
-      <% end %>
-      <span class="card-text">本文：<%= question.content %></span>
-      <br>
-      <span class="timestamp">
-       <%= time_ago_in_words(question.created_at) %>前
-       <%= link_to question.user.name, question.user %>
-      </span>
     <% end %>
+    <%= search_form_for @q do |f| %>
+      <%= f.hidden_field :category_eq, value: question.category %>
+      <%= button_tag type: 'submit', class: 'card-category' do %>
+        <i><%= question.category %></i>
+      <% end %>
+    <% end %>
+    <span class="card-text">本文：<%= question.content %></span>
+    <br>
+    <span class="timestamp">
+     <%= time_ago_in_words(question.created_at) %>前
+     <%= link_to question.user.name, question.user %>
+    </span>
   </li>
 </div>
-

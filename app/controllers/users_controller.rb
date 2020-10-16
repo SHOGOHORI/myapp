@@ -12,12 +12,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     redirect_to root_url and return unless @user.activated?
-    query = "SELECT * 
+    query = "SELECT questions.* 
              FROM questions
              JOIN answers 
              ON questions.id=answers.question_id
              WHERE answers.user_id = #{@user.id}"
-    @answer_question = Question.find_by_sql(query)
+    @questions = Question.find_by_sql(query)
   end
 
   def new
