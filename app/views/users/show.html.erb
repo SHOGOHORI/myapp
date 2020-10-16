@@ -25,7 +25,7 @@
       <%= will_paginate @user_questions %>
     </div>
     <input type="radio" name="tab_name" id="tab2" >
-    <label class="tab_class" for="tab2">回答(<%= @user_answers.count %>件)</label>
+    <label class="tab_class" for="tab2">回答(<%= @user.answers.count %>件)</label>
       <div class="content_class">
         <%= will_paginate @user_answers %>
           <ul class="questions">

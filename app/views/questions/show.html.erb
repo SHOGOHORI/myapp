@@ -19,7 +19,7 @@
             <i><%= @question.category %></i>
           <% end %>
         <% end %>
-        <span class="card-text"><%= @question.content %></span>
+        <span class="card-text"><%= safe_join(@question.content.split("\n"),tag(:br)) %></span>
         <br>
         <% if @question.image.attached? %>
           <%= image_tag post_image(@question.image)  %>

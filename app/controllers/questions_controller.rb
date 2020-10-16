@@ -10,6 +10,9 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answers = @question.answers.recently
     @answer = current_user.answers.build(question: @question) if logged_in?
+    unless logged_in?
+      remember_current_location
+    end
   end
 
   def new
@@ -56,6 +59,10 @@ class QuestionsController < ApplicationController
   def correct_user
     @question = current_user.questions.find_by(id: params[:id])
     redirect_to root_url if @question.nil?
+  end
+
+  def remember_current_location
+    session[:forwarding_url] = request.url
   end
 
 end

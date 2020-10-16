@@ -25,10 +25,10 @@ User.create!(name:  "shogohori",
     activated_at: Time.zone.now)
 
 # 追加のユーザーをまとめて生成する
-99.times do |n|
+6.times do |n|
 name  = Faker::Name.name
 email = "example-#{n+1}@example.org"
-introduction = Faker::Lorem.sentence(word_count: 3)
+introduction = "テストユーザーです。"
 password = "Aaaaaaaa1?"
 User.create!(name:  name,
     email: email,
@@ -39,18 +39,47 @@ User.create!(name:  name,
     activated_at: Time.zone.now)
 end
 
-# ユーザーの一部を対象にQ&Aを生成する
-users = User.order(:created_at).take(6)
-50.times do
-  content = Faker::Lorem.sentence(word_count: 30)
-  title = Faker::Lorem.sentence(word_count: 3)
-  category = ["教育", "健康", "食事", "安全", "ママの悩み"]
-  users.each { |user| user.questions.create!(content: content,title: title,category: category.sample) }
-end
+# サンプル質問、回答を作成する
+Question.create!(title:  "生後一ヶ月のイビキについて",
+  category: "健康",
+  content: "こんにちは。生後1ヶ月になる娘がいます。\n
+            夜中になるとフガフガとイビキをかいていて息苦しそうにしています。\n
+            寝ている間にSIDSにならないか心配です。\n
+            このまま様子を見るだけで良いのか、それとも鼻の吸引などしてあげた方がいいのでしょうか？",
+  user_id: 3)
 
-shogo = User.first
-content = Faker::Lorem.sentence(word_count: 30)
 question = Question.first
-Answer.create(content: content,
-              user_id: shogo.id,
+test_user = User.find_by(email: "test@example.com")
+Answer.create(content: "こんにちは。\n
+                        息苦しそうにしている赤ちゃんを見ていると心配になりますよね。\n
+                        赤ちゃんは大人より鼻孔が狭いためイビキをかきやすいです。\n
+                        イビキをかいているときに無呼吸にはなっておらず、顔色も悪くなく、起きているときに元気そうにしていれば大きな問題はないかと思います。\n
+                        もしイビキがひどく心配なようでしたらお医者様に相談した方が良いかもしれません。",
+              user_id: test_user.id,
               question_id: question.id)
+
+Question.create!(title:  "離乳食を嫌がる",
+  category: "食事",
+  content: "数日前から離乳食をはじめました。\n
+            初日に10倍粥をあげたのですが全然食べてくれず、たらたらと口からこぼれてしまい…\n
+            最初だから仕方がないと思ったのですが、数日経った今も全然食べてくれません。\n
+            こぼしていたのは最初だけで今は食べさせると体をのけぞらせて嫌がります。\n
+            どうしたら食べてくれるでしょうか…",
+  user_id: 4)
+
+test_user = User.find_by(email: "test@example.com")
+Answer.create(content: "裏ごしはしっかりしていますか？\n
+                        赤ちゃんは母乳やミルクなどの液体以外を口にするのが初めてなので固形っぽさが残っていると戸惑ってしまいます。\n
+                        もし裏ごしがたらずつぶつぶしているようだったらしっかり裏ごしすると少し違うかもしれません。",
+              user_id: test_user.id,
+              question_id: 2)
+
+
+# ユーザーの一部を対象にQ&Aを生成する
+# users = User.order(:created_at).take(6)
+# 50.times do
+#   content = Faker::Lorem.sentence(word_count: 30)
+#   title = Faker::Lorem.sentence(word_count: 3)
+#   category = ["教育", "健康", "食事", "安全", "ママの悩み"]
+#   users.each { |user| user.questions.create!(content: content,title: title,category: category.sample) }
+# end
