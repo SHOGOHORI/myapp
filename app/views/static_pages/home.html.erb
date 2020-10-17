@@ -13,17 +13,17 @@
       <%= render partial: 'questions/category' %>
     </div>
     <div class="question-index">
-      <%= will_paginate @questions, remote: true %>
+      <%= paginate @questions, remote: true %>
         <ul class="questions">
           <section class="question_index">
             <div class="card" style="width: 100%;" >
-              <div class="card-body">
-                <%= render partial: 'questions/question', collection: @questions %>
+              <div class="card-body" >
+                <%= render partial: 'questions/question', collection: @questions, id: 'question-index' %>
               </div>
             </div>
           </section>
         </ul>
-      <%= will_paginate @questions, remote: true %>
+      <%= paginate @questions, remote: true %>
     </div>
   </div>
 

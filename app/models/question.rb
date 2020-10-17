@@ -7,6 +7,7 @@ class Question < ApplicationRecord
   validates :title, presence: true, length: { maximum: 300 }
   validates :category, presence: true, length: { maximum: 10 }
   has_one_attached :image
+  paginates_per 1
   validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
                                        message: "有効な画像を投稿してください。" },
                                        size:         { less_than: 5.megabytes,
