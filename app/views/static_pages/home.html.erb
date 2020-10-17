@@ -1,29 +1,4 @@
 <!-- < img src="/assets/psychedelic1.jpg" class="img-responsive"> -->
-<% if !logged_in? %>
-  <div class="home-explanation">
-    <p>あなたの育児の困った!を救うQ&Aサイト</p>
-    <%= image_tag 'SUKUSUKU.png', height: "100px" %>
-  </div>
-  <div class="non-login">
-    <%= render 'sessions/login' %>
-  </div>
-<% end %>
-  <div class="question-container">
-    <div class="question-category">
-      <%= render partial: 'questions/category' %>
-    </div>
-    <div class="question-index">
-      <%= paginate @questions, remote: true %>
-        <ul class="questions">
-          <section class="question_index">
-            <div class="card" style="width: 100%;" >
-              <div class="card-body" >
-                <%= render partial: 'questions/question', collection: @questions, id: 'question-index' %>
-              </div>
-            </div>
-          </section>
-        </ul>
-      <%= paginate @questions, remote: true %>
-    </div>
-  </div>
-
+<div id="pagenate">
+  <%= render partial: 'index_page' %>
+</div>

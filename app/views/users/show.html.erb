@@ -12,7 +12,7 @@
     <input type="radio" name="tab_name" id="tab1" checked>
     <label class="tab_class" for="tab1">質問(<%= @user_questions.count %>件)</label>
     <div class="content_class">
-      <%= will_paginate @user_questions %>
+      <%= paginate @user_questions, remote: true%>
         <ul class="questions">
           <section class="question_index">
             <div class="card" style="width: 100%;" >
@@ -22,12 +22,12 @@
             </div>
           </section>
         </ul>
-      <%= will_paginate @user_questions %>
+      <%= paginate @user_questions, remote: true %>
     </div>
     <input type="radio" name="tab_name" id="tab2" >
     <label class="tab_class" for="tab2">回答(<%= @user.answers.count %>件)</label>
       <div class="content_class">
-        <%= will_paginate @user_answers %>
+        <%= paginate @user_answers, remote: true %>
           <ul class="questions">
             <section class="question_index">
               <div class="card" style="width: 100%;" >
@@ -37,7 +37,7 @@
               </div>
             </section>
           </ul>
-        <%= will_paginate @user_answers %>
+        <%= paginate @user_answers, remote: true %>
     </div>
   </div>
 </div>

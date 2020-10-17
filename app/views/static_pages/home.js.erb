@@ -1,2 +1,1 @@
-<% @questions = Question.page(params[:page]) %>
-$('#questions').html("<%= escape_javascript(render  partial: 'questions/question', collection: @questions) %>");
+ $('#pagenate').html("<%= escape_javascript(render 'index_page') %>");

@@ -25,7 +25,7 @@ User.create!(name:  "shogohori",
     activated_at: Time.zone.now)
 
 # 追加のユーザーをまとめて生成する
-6.times do |n|
+99.times do |n|
 name  = Faker::Name.name
 email = "example-#{n+1}@example.org"
 introduction = "テストユーザーです。"

@@ -6,19 +6,19 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.where(activated: true).page(params[:page]).per(10)
+    @users = User.where(activated: true).page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
     redirect_to root_url and return unless @user.activated?
-    @user_questions = @user.questions.page(params[:page]), per_page: 10
-    query = "SELECT questions.* 
-             FROM questions
-             JOIN answers 
-             ON questions.id=answers.question_id
-             WHERE answers.user_id = #{@user.id}"
-    @user_answers = Question.page_by_sql(query, params[:page]), per_page: 10
+    @user_questions = @user.questions.page(params[:page])
+    @query = Question.find_by_sql(["SELECT questions.* 
+                                    FROM questions
+                                    JOIN answers 
+                                    ON questions.id=answers.question_id
+                                    WHERE answers.user_id = #{@user.id}"])
+    @user_answers = Kaminari.paginate_array(@query).page(params[:page])
   end
 
   def new

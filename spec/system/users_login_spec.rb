@@ -10,7 +10,7 @@ RSpec.describe "UsersLogins", type: :system do
     click_button 'ログイン'
     expect(current_path).to eq root_path
     visit current_path
-    click_link 'アカウント'
+    click_link 'マイページ'
     click_link 'ログアウト'
     expect(current_path).to eq root_path
     expect(page).to have_link 'ログイン', href: login_path

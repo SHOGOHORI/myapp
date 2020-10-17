@@ -8,7 +8,7 @@
   <% else %>
     <div class="question-index">
       <h3>検索結果　<%= @search_questions.count %>件</h3>
-      <%= will_paginate @search_questions, remote: true %>
+      <%= paginate @search_questions, remote: true %>
         <ul class="questions">
           <section class="question_index">
             <div class="card" style="width: 100%;" >
@@ -18,7 +18,7 @@
             </div>
           </section>
         </ul>
-      <%= will_paginate @search_questions, remote: true %>
+      <%= paginate @search_questions, remote: true %>
     </div>
   <% end %>
 </div>
