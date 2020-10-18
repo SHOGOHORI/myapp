@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @questions = Question.page(params[:page]).per(1).all
+    @questions = Question.page(params[:page]).per(10).all
     respond_to do |format|
       format.html
       format.js
