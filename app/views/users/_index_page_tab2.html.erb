@@ -8,25 +8,29 @@
     </div>
   </aside>
   <div class="area">
-    <%= link_to "/users/#{@user.id}/tab1" do %>
-      <input type="radio" name="tab_name" id="tab1">
-      <label class="tab_class" for="tab1">質問(<%= @user.questions.count %>件)</label>
-    <% end %>
-    <input type="radio" name="tab_name" id="tab2" checked >
-    <label class="tab_class" for="tab2">回答(<%= @user.answers.count %>件)</label>
-    <div class="content_class">
-      <%= paginate @user_answers, remote: true %>
-        <ul class="questions">
-          <section class="question_index">
-            <div class="card" style="width: 100%;" >
-              <div class="card-body">
-              <%= render partial: 'questions/question', collection: @user_answers %>
-              </div>
+    <ul>
+      <li>
+        <%= link_to "/users/#{@user.id}/tab1" do %>
+          <label class="tab_class" for="tab1">質問(<%= @user.questions.count %>件)</label>
+        <% end %>
+      </li>
+      <li>
+        <label class="tab_class_check" for="tab2">回答(<%= @user.answers.count %>件)</label>
+      </li>
+    </ul>
+  </div>
+  <div class="content_class">
+    <%= paginate @user_answers, remote: true %>
+      <ul class="questions">
+        <section class="question_index">
+          <div class="card" style="width: 100%;" >
+            <div class="card-body">
+            <%= render partial: 'questions/question', collection: @user_answers %>
             </div>
-          </section>
-        </ul>
-      <%= paginate @user_answers, remote: true %>
-    </div>
+          </div>
+        </section>
+      </ul>
+    <%= paginate @user_answers, remote: true %>
   </div>
 </div>
 <!--フッター調整用-->

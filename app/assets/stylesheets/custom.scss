@@ -491,10 +491,13 @@ ul {
   width: 65%;
   flex-wrap: wrap;
   display: flex;
+  li {
+    float:left;
+  }
 }
  
 .tab_class {
-  width: calc(100%/5);
+  width: 200px;
   height: 50px;
   background-color: darkgrey;
   line-height: 50px;
@@ -504,19 +507,18 @@ ul {
   float: left;
   order: -1;
 }
- 
-input[name="tab_name"] {
-  display: none;
-}
- 
-input:checked + .tab_class {
+
+.tab_class_check {
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 15px;
+  text-align: center;
+  display: block;
+  float: left;
+  order: -1;
   background-color: cadetblue;
   color: aliceblue;
-}
- 
-.content_class {
-  display: none;
-  width: 100%;
 }
  
 input:checked + .tab_class + .content_class {
