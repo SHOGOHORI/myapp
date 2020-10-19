@@ -14,8 +14,7 @@ RSpec.describe "UsersIndices", type: :system do
     log_in_as(admin_user)
     visit users_path
     expect(html).to include 'page'
-    create_list(:user, 40)
-    first_page_of_users = User.page(page: 1)
+    first_page_of_users = User.first(10)
     first_page_of_users.each do |user|
       expect(page).to have_link user.name, href: user_path(user)
       unless user == admin_user
