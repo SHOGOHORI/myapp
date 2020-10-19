@@ -13,6 +13,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_to root_url and return unless @user.activated?
     @user_questions = @user.questions.page(params[:page]).per(1)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def show_tab2
+    @user = User.find(params[:id])
+    redirect_to root_url and return unless @user.activated?
     @query = Question.find_by_sql(["SELECT questions.* 
                                     FROM questions
                                     JOIN answers 
