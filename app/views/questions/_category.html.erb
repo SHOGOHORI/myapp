@@ -1,9 +1,9 @@
 <div class="question-category">
-  <h4>カテゴリー検索</h4>
+  <h4>最新タグ検索</h4>
   <div class="card" style="width: 100%;" >
     <div class="card-body">
       <% @questoins = Question.all %>
-        <% @questoins.pluck(:category).uniq.each do |category| %>
+        <% @questoins.pluck(:category).uniq.first(10).each do |category| %>
           <%= search_form_for @q do |f| %>
             <%= f.hidden_field :category_eq, value: category %>
             <%= button_tag type: 'submit', class: 'card-category' do %>

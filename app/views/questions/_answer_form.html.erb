@@ -1,4 +1,5 @@
 <%= form_with(model: @answer, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
   <%= f.label :content, "回答" %>
   <%= f.text_area :content, class: 'form-control' %>
   <%= hidden_field_tag :question_id, @question.id %>

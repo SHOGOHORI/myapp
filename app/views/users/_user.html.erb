@@ -2,7 +2,7 @@
   <%  if user.avatar.attached? %>
     <%= image_tag display_avatar(user.avatar), size: 50, class: 'user-image' %>
   <% else %>
-    <%= gravatar_for user, size: 50 %>
+    <%= image_tag 'user_avatar.png', size: 50 %>
   <% end %>
   <%= link_to user.name, user %>
   <% if current_user.admin? && !current_user?(user) %>

@@ -1,0 +1,38 @@
+<div class="user-show">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <%= render partial: 'shared/user_info' %>
+    </section>
+    <div class="question-category">
+      <%= render partial: 'questions/category' %>
+    </div>
+  </aside>
+  
+  <div class="area">
+    <ul>
+      <li>
+        <label class="tab_class_check" for="tab1">質問(<%= @user.questions.count %>件)</label>
+      </li>
+      <li>
+        <%= link_to "/users/#{@user.id}/tab2" do %>
+          <label class="tab_class" for="tab2">回答(<%= @user.answers.count %>件)</label>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="content_class">
+    <%= paginate @user_questions, remote: true%>
+      <ul class="questions">
+        <section class="question_index">
+          <div class="card" style="width: 100%;" >
+            <div class="card-body">
+            <%= render partial: 'questions/question', collection: @user_questions %>
+            </div>
+          </div>
+        </section>
+      </ul>
+    <%= paginate @user_questions, remote: true %>
+  </div>
+</div>
+<!--フッター調整用-->
+</div>

@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @questions = Question.paginate(page: params[:page], per_page: 10)
+    @questions = Question.page(params[:page]).per(10).all
     respond_to do |format|
       format.html
       format.js

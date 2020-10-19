@@ -18,6 +18,7 @@ class User < ApplicationRecord
                                       message: "有効な画像を投稿してください。" },
                                       size:         { less_than: 5.megabytes,
                                       message: "5MB以下の画像を投稿してください。" }
+  paginates_per 5
 
   class << self
     # 渡された文字列のハッシュ値を返す

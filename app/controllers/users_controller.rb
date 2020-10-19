@@ -6,19 +6,32 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.where(activated: true).paginate(page: params[:page])
+    @users = User.where(activated: true).page(params[:page]).per(10).all
   end
 
   def show
     @user = User.find(params[:id])
     redirect_to root_url and return unless @user.activated?
-    @user_questions = @user.questions.paginate(page: params[:page], per_page: 10)
-    query = "SELECT questions.* 
-             FROM questions
-             JOIN answers 
-             ON questions.id=answers.question_id
-             WHERE answers.user_id = #{@user.id}"
-    @user_answers = Question.paginate_by_sql(query, page: params[:page], per_page: 10)
+    @user_questions = @user.questions.page(params[:page]).per(10)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def show_tab2
+    @user = User.find(params[:id])
+    redirect_to root_url and return unless @user.activated?
+    @query = Question.find_by_sql(["SELECT questions.* 
+                                    FROM questions
+                                    JOIN answers 
+                                    ON questions.id=answers.question_id
+                                    WHERE answers.user_id = #{@user.id}"])
+    @user_answers = Kaminari.paginate_array(@query).page(params[:page]).per(10)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -55,12 +68,6 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "ユーザーを削除しました"
     redirect_to users_url
-  end
-
-  # 試作feedの定義
-  # 完全な実装は次章の「ユーザーをフォローする」を参照
-  def feed
-    Question.where.paginate(page: params[:page])
   end
 
   private

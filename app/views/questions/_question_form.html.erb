@@ -1,9 +1,9 @@
 <%= form_with(model: @question, local: true) do |f| %>
-  <%= render 'error_messages', object: f.object %>
+  <%= render 'shared/error_messages', object: f.object %>
   <%= f.label :title, "タイトル" %>
   <%= f.text_field :title, class: 'form-control' %>
 
-  <%= f.label :category, "カテゴリー" %>
+  <%= f.label :category, "タグ" %>
   <%= f.text_field :category, class: 'form-control' %>
 
     <%= f.label :content, "本文" %>

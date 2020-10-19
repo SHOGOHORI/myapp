@@ -13,8 +13,8 @@ RSpec.describe "Homes", type: :system do
     visit root_path
     expect(page).to have_link , href: root_path
     expect(page).to have_link '概要', href: about_path
-    click_link 'アカウント'
-    expect(page).to have_link 'プロフィール', href: user_path(user)
+    click_link user.name
+    expect(page).to have_link 'マイページ', href: user_path(user)
     expect(page).to have_link 'ログアウト', href: logout_path
   end
 end

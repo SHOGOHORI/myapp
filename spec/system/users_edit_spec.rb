@@ -11,7 +11,6 @@ RSpec.describe "UsersEdits", type: :system do
     fill_in 'パスワード確認', with: "bar"
     click_button 'プロフィール更新'
     expect(current_path).to eq user_path(user)
-    expect(html).to have_content "4箇所の入力誤りが発生しています"
   end
   
   scenario '有効な編集' do

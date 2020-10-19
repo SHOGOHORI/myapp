@@ -3,7 +3,11 @@ class QuestionsController < ApplicationController
   before_action :correct_user,   only: [:destroy, :edit, :update]
 
   def index
-    @questions = Question.paginate(page: params[:page], per_page: 10)
+    @questions = Question.page(params[:page]).per(10).all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

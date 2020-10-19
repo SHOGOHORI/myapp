@@ -2,7 +2,7 @@
   <%  if @user.avatar.attached? %>
     <%= image_tag display_avatar(@user.avatar), class: 'user-image' %>
   <% else %>
-    <%= gravatar_for @user %>
+    <%= image_tag 'user_avatar.png', size: 100 %>
   <% end %>
   <h1>
     <%= @user.name %>

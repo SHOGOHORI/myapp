@@ -134,6 +134,18 @@ GEM
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     jmespath (1.4.0)
+    kaminari (1.2.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.1)
+      kaminari-activerecord (= 1.2.1)
+      kaminari-core (= 1.2.1)
+    kaminari-actionview (1.2.1)
+      actionview
+      kaminari-core (= 1.2.1)
+    kaminari-activerecord (1.2.1)
+      activerecord
+      kaminari-core (= 1.2.1)
+    kaminari-core (1.2.1)
     launchy (2.5.0)
       addressable (~> 2.7)
     listen (3.2.1)
@@ -337,6 +349,7 @@ DEPENDENCIES
   font-awesome-sass
   image_processing
   jbuilder (= 2.9.1)
+  kaminari
   launchy (~> 2.5)
   listen (~> 3.2, >= 3.2.1)
   mail-iso-2022-jp

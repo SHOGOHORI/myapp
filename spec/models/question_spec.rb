@@ -3,12 +3,13 @@ require 'rails_helper'
 RSpec.describe Question, type: :model do
   describe '質問' do
     let!(:user) { create(:user) }
-    let(:question) { build(:question, title: title, content: content, user_id: user_id) }
+    let(:question) { build(:question, title: title, category: category, content: content, user_id: user_id) }
 
     subject { question }
     context '有効な質問' do
       let(:user_id) { user.id }
       let(:title) { "困っています" }
+      let(:category) { "生活" }
       let(:content) { "子供が泣き止みません" }
       it { is_expected.to be_valid }
     end
@@ -16,20 +17,31 @@ RSpec.describe Question, type: :model do
     context 'ユーザーID無し' do
       let(:user_id) { nil }
       let(:title) { "困っています" }
+      let(:category) { "生活" }
       let(:content) { "子供が泣き止みません" }
       it { is_expected.to_not be_valid }
     end
 
     context 'content無し' do
       let(:user_id) { user.id }
-      let(:title) { "   " }
-      let(:content) { "子供が泣き止みません" }
+      let(:title) { "困っています" }
+      let(:category) { "生活" }
+      let(:content) { "  " }
       it { is_expected.to_not be_valid }
     end
 
     context "title無し" do
       let(:user_id) { user.id }
       let(:title) { "   " }
+      let(:category) { "生活" }
+      let(:content) { "子供が泣き止みません" }
+      it { is_expected.to_not be_valid }
+    end
+
+    context "タグ無し" do
+      let(:user_id) { user.id }
+      let(:title) { "困っています" }
+      let(:category) { "   " }
       let(:content) { "子供が泣き止みません" }
       it { is_expected.to_not be_valid }
     end
@@ -37,6 +49,7 @@ RSpec.describe Question, type: :model do
     context 'titleが長すぎる' do
       let(:user_id) { user.id }
       let(:title) { "a" * 301 }
+      let(:category) { "生活" }
       let(:content) { "子供が泣き止みません" }
       it { is_expected.to_not be_valid }
     end
