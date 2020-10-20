@@ -3,6 +3,11 @@
 ## 使い方
 
 このアプリケーションを動かす場合は、まずはリポジトリを手元にクローンしてください。
+
+```
+$ git clone https://github.com/SHOGOHORI/myapp.git
+```
+
 その後、次のコマンドで必要になる RubyGems をインストールします。
 
 ```
