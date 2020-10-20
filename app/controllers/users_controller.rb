@@ -42,9 +42,15 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.avatar.attach(params[:user][:avatar])
     if @user.save
-      @user.send_activation_email
-      flash[:info] = "アカウント有効化のメールを送信しました。"
-      redirect_back_or root_url
+      # ユーザーメーラー機能有
+      # @user.send_activation_email
+      # flash[:info] = "アカウント有効化のメールを送信しました。"
+
+      # ユーザーメーラー機能有
+      @user.activate
+      log_in @user
+      flash[:info] = "ユーザー登録しました"
+      redirect_to @user
     else
       render 'new'
     end
