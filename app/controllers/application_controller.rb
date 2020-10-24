@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def set_search
     @q = Question.ransack(params[:q])
-    @search_questions = @q.result.page(params[:page]).per(10).all
+    @search_questions = Kaminari.paginate_array(@q.result).page(params[:page]).per(10)
   end
 
   private

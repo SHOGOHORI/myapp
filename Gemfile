@@ -10,8 +10,6 @@ gem 'rails-i18n', '~> 6.0'
 gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 gem 'faker', '~> 2.14'
 gem 'faker-japanese'
-gem 'will_paginate', '~> 3.3'
-gem 'bootstrap-will_paginate', '~> 1.0'
 gem 'bootstrap-sass', '3.4.1'
 gem 'puma'
 gem 'sass-rails', '5.1.0'
@@ -19,10 +17,8 @@ gem 'webpacker', '~> 5.2', '>= 5.2.1'
 gem 'turbolinks', '5.2.0'
 gem 'jbuilder',   '2.9.1'
 gem 'bootsnap',   '1.4.5', require: false
-gem 'rake', '~> 13.0', '>= 13.0.1'
-gem 'execjs', '~> 2.7'
 gem 'mail-iso-2022-jp'
-gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'ransack'
 gem 'font-awesome-sass'
 gem 'kaminari'
 
@@ -40,10 +36,6 @@ group :development do
   gem 'listen', '~> 3.2', '>= 3.2.1'
   gem 'spring', '~> 2.1', '>= 2.1.1'
   gem 'spring-watcher-listen', '2.0.1'
-  gem 'rubocop', require: false
-  gem 'rubocop-performance', require: false
-  gem 'rubocop-rails', require: false
-  gem 'rubocop-rspec'
 end
 
 group :test do
@@ -52,7 +44,7 @@ group :test do
   gem 'webdrivers', '~> 4.4', '>= 4.4.1'
   gem 'launchy', '~> 2.5'
   gem 'rack_session_access', '~> 0.2.0'
-  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
+  gem 'rails-controller-testing'
 end
 
 group :production do

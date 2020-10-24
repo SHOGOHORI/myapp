@@ -6,13 +6,14 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.where(activated: true).page(params[:page]).per(10).all
+    @users = User.where(activated: true)
+    @users = Kaminari.paginate_array(@users).page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
     redirect_to root_url and return unless @user.activated?
-    @user_questions = @user.questions.page(params[:page]).per(10)
+    @user_questions = Kaminari.paginate_array(@user.questions).page(params[:page])
     respond_to do |format|
       format.html
       format.js
@@ -22,12 +23,8 @@ class UsersController < ApplicationController
   def show_tab2
     @user = User.find(params[:id])
     redirect_to root_url and return unless @user.activated?
-    @query = Question.find_by_sql(["SELECT questions.* 
-                                    FROM questions
-                                    JOIN answers 
-                                    ON questions.id=answers.question_id
-                                    WHERE answers.user_id = #{@user.id}"])
-    @user_answers = Kaminari.paginate_array(@query).page(params[:page]).per(10)
+    @user_answers = Question.joins(:answers).where(answers: { user: User.find(@user.id) })
+    @user_answers = Kaminari.paginate_array(@user_answers).page(params[:page])
     respond_to do |format|
       format.html
       format.js

@@ -1,5 +1,4 @@
 require 'rails_helper'
-include ApplicationHelper
 
 RSpec.describe "QuestionIndices", type: :system do
   scenario '質問一覧' do

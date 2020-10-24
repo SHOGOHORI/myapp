@@ -7,7 +7,6 @@ class AnswersController < ApplicationController
     @answer = current_user.answers.build(answer_params)
     @answer.question_id = @question.id
     @answer.image.attach(params[:answer][:image])
-    @answers = @question.answers.recently
     if @answer.save
       flash[:success] = "回答を投稿しました"
       redirect_to question_path(@question)
