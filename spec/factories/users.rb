@@ -21,6 +21,7 @@ FactoryBot.define do
     password_confirmation { 'Aaaaaaaa1?' }
     activated { true }
     activated_at { Time.zone.now }
+    guest_user { true }
   end
 
 end

@@ -1,12 +1,12 @@
-<%= form_with(model: @answer, local: true) do |f| %>
+<%= form_with(model: [@question, @answer], local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <%= f.label :content, "回答" %>
   <%= f.text_area :content, class: 'form-control' %>
-  <%= hidden_field_tag :question_id, @question.id %>
 
   <span class="image">
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
   </span>
+  <%= f.hidden_field :question_id, :value => @question.id %>
 
   <%= f.submit "投稿する", class: "btn-square-slant" %>
 <% end %>

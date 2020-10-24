@@ -22,7 +22,8 @@ User.create!(name:  "shogohori",
     password_confirmation: "Aaaaaaaa1?",
     introduction: "ゲストユーザーです。",
     activated: true,
-    activated_at: Time.zone.now)
+    activated_at: Time.zone.now,
+    guest_user: true)
 
 # 追加のユーザーをまとめて生成する
 names  = ["Naomi", "Youko", "Hanako", "Maria", "Yokota", "Koji"]

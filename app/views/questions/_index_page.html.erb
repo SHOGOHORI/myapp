@@ -6,7 +6,7 @@
     <h3 class="non-question">質問がありません。</h3>
   <% else %>
     <div class="question-index">
-      <h3>検索結果　<%= @search_questions.count %>件</h3>
+      <h3>検索結果　<%= @search_questions.total_count %>件</h3>
       <%= paginate @search_questions, remote: true %>
         <ul class="questions">
           <section class="question_index">

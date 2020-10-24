@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :correct_user,   only: [:destroy, :edit, :update]
 
   def index
-    @questions = Question.all
+    @questions = Question.all.recently
     @questions = Kaminari.paginate_array(@questions).page(params[:page])
     respond_to do |format|
       format.html
@@ -13,11 +13,8 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @answers = @question.answers.recently
     @answer = current_user.answers.build(question: @question) if logged_in?
-    unless logged_in?
-      remember_current_location
-    end
+    remember_current_location unless logged_in?
   end
 
   def new
@@ -28,10 +25,9 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.build(question_params)
     @question.image.attach(params[:question][:image])
     if @question.save
-      flash[:success] = "投稿しました"
-      redirect_to question_url(@question)
+      redirect_to question_url(@question), success: '投稿しました'
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -51,7 +47,7 @@ class QuestionsController < ApplicationController
       flash[:success] = "質問を更新しました"
       redirect_to @question
     else
-      render 'edit'
+      render :edit
     end
   end
 
