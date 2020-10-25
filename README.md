@@ -86,8 +86,3 @@ $ rails server
 　・SNSシェア機能<br>
 　・デザインを充実させる<br>
 　・AWSにデプロイ<br>
-
-## 作者に関する情報
-　堀彰吾<br>
-　twitter<br>
-   mail to: shogo.hori.1988@gmail.com<br>
