@@ -15,7 +15,7 @@ class AnswersController < ApplicationController
 
   def destroy
     @answer.destroy
-    redirect_to request.referrer || root_url, flash: { success: '削除しました' }
+    redirect_to(request.referrer, flash: { success: '削除しました' }) || root_url
   end
   
   private
