@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  before_action :correct_user,   only: [:destroy, :edit, :update]
+  before_action :set_question,   only: [:destroy, :edit, :update]
 
   def index
     @questions = Question.all.recently
@@ -56,9 +56,8 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:content, :title, :category, :image)
   end
 
-  def correct_user
+  def set_question
     @question = current_user.questions.find_by(id: params[:id])
-    redirect_to root_url if @question.nil?
   end
 
   def remember_current_location

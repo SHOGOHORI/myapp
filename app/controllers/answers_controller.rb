@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :set_question
-  before_action :correct_user,   only: :destroy
+  before_action :set_answer,   only: :destroy
 
   def create
     @answer = current_user.answers.build(answer_params)
@@ -24,9 +24,8 @@ class AnswersController < ApplicationController
     params.require(:answer).permit(:content, :question_id, :image)
   end
 
-  def correct_user
+  def set_answer
     @answer = current_user.answers.find(params[:id])
-    redirect_to root_url if @answer.nil?
   end
 
   def set_question
