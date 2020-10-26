@@ -25,15 +25,15 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.build(question_params)
     @question.image.attach(params[:question][:image])
     if @question.save
-      redirect_to question_url(@question), success: '投稿しました'
+      redirect_to question_url(@question), flash: { success: '投稿しました' }
     else
-      render :new
+      render :new, flash: { danger: '投稿に失敗しました' }
     end
   end
 
   def destroy
     @question.destroy
-    flash[:success] = "削除しました"
+    flash[:success] = '削除しました'
     redirect_back_or questions_url
   end
 
@@ -44,8 +44,7 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
-      flash[:success] = "質問を更新しました"
-      redirect_to @question
+      redirect_to @question, flash: { success: '質問を更新しました' }
     else
       render :edit
     end

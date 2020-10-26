@@ -41,8 +41,7 @@ class UsersController < ApplicationController
     if @user.save
       @user.activate
       log_in @user
-      flash[:info] = "ユーザー登録しました"
-      redirect_to @user
+      redirect_to @user, flash: { success: 'ユーザー登録しました' }
     else
       render :new
     end
@@ -55,8 +54,7 @@ class UsersController < ApplicationController
   def update
     redirect_to(root_url) unless current_user?(@user)
     if @user.update(user_params)
-      flash[:success] = "プロフィールを更新しました"
-      redirect_to @user
+      redirect_to @user, flash: { success: 'プロフィールを更新しました' }
     else
       render :edit
     end
@@ -64,8 +62,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:success] = "ユーザーを削除しました"
-    redirect_to users_url
+    redirect_to users_url, flash: { success: 'ユーザーを削除しました' }
   end
 
   private

@@ -7,8 +7,7 @@ class AnswersController < ApplicationController
     @answer = current_user.answers.build(answer_params)
     @answer.image.attach(params[:answer][:image])
     if @answer.save
-      flash[:success] = "回答を投稿しました"
-      redirect_to question_path(@question)
+      redirect_to question_path(@question), flash: { success: '回答を投稿しました' }
     else
       render 'questions/show'
     end
@@ -16,8 +15,7 @@ class AnswersController < ApplicationController
 
   def destroy
     @answer.destroy
-    flash[:success] = "削除しました"
-    redirect_to request.referrer || root_url
+    redirect_to request.referrer || root_url, flash: { success: '削除しました' }
   end
   
   private

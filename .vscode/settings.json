@@ -21,7 +21,4 @@
   ],
   "sqltools.useNodeRuntime": true
 
-  "emmet.includeLanguages": {
-      "erb": "html"
-  }
 }
