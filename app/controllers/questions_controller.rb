@@ -1,9 +1,10 @@
 class QuestionsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  before_action :correct_user,   only: [:destroy, :edit, :update]
+  before_action :set_question,   only: [:destroy, :edit, :update]
 
   def index
-    @questions = Question.page(params[:page]).per(10).all
+    @questions = Question.all.recently
+    @questions = Kaminari.paginate_array(@questions).page(params[:page])
     respond_to do |format|
       format.html
       format.js
@@ -12,11 +13,8 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @answers = @question.answers.recently
     @answer = current_user.answers.build(question: @question) if logged_in?
-    unless logged_in?
-      remember_current_location
-    end
+    remember_current_location unless logged_in?
   end
 
   def new
@@ -27,16 +25,15 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.build(question_params)
     @question.image.attach(params[:question][:image])
     if @question.save
-      flash[:success] = "投稿しました"
-      redirect_to question_url(@question)
+      redirect_to question_url(@question), flash: { success: '投稿しました' }
     else
-      render 'new'
+      render :new, flash: { danger: '投稿に失敗しました' }
     end
   end
 
   def destroy
     @question.destroy
-    flash[:success] = "削除しました"
+    flash[:success] = '削除しました'
     redirect_back_or questions_url
   end
 
@@ -47,10 +44,9 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
-      flash[:success] = "質問を更新しました"
-      redirect_to @question
+      redirect_to @question, flash: { success: '質問を更新しました' }
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -60,9 +56,8 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:content, :title, :category, :image)
   end
 
-  def correct_user
+  def set_question
     @question = current_user.questions.find_by(id: params[:id])
-    redirect_to root_url if @question.nil?
   end
 
   def remember_current_location

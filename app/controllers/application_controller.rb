@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
 
   def set_search
     @q = Question.ransack(params[:q])
-    @search_questions = @q.result.page(params[:page]).per(10).all
+    @q.sorts = 'updated_at desc' if @q.sorts.empty?
+    @search_questions = Kaminari.paginate_array(@q.result).page(params[:page]).per(10)
   end
 
   private
@@ -13,8 +14,7 @@ class ApplicationController < ActionController::Base
   def logged_in_user
     unless logged_in?
       store_location
-      flash[:danger] = "ログインしてください"
-      redirect_to login_url
+      redirect_to login_url, flash: { danger: 'ログインしてください' }
     end
   end
 

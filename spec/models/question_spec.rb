@@ -60,7 +60,8 @@ RSpec.describe Question, type: :model do
     question = create(:question, user_id: user.id)
     orange = create(:orange, user_id: user.id)
     most_recent = create(:most_recent, user_id: user.id)
-    expect(Question.first).to eq most_recent
+    @first_questions = Question.all.recently
+    expect(@first_questions.first).to eq most_recent
   end
 
   it 'ユーザーを削除すると関連する質問も削除される' do

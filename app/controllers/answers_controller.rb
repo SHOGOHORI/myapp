@@ -1,16 +1,13 @@
 class AnswersController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  before_action :set_question, only: :create
-  before_action :correct_user,   only: :destroy
+  before_action :set_question
+  before_action :set_answer,   only: :destroy
 
   def create
     @answer = current_user.answers.build(answer_params)
-    @answer.question_id = @question.id
     @answer.image.attach(params[:answer][:image])
-    @answers = @question.answers.recently
     if @answer.save
-      flash[:success] = "回答を投稿しました"
-      redirect_to question_path(@question)
+      redirect_to question_path(@question), flash: { success: '回答を投稿しました' }
     else
       render 'questions/show'
     end
@@ -18,8 +15,7 @@ class AnswersController < ApplicationController
 
   def destroy
     @answer.destroy
-    flash[:success] = "削除しました"
-    redirect_to request.referrer || root_url
+    redirect_to(request.referrer, flash: { success: '削除しました' }) || root_url
   end
   
   private
@@ -28,16 +24,11 @@ class AnswersController < ApplicationController
     params.require(:answer).permit(:content, :question_id, :image)
   end
 
-  def correct_user
-    @answer = current_user.answers.find_by(id: params[:id])
-    redirect_to root_url if @answer.nil?
+  def set_answer
+    @answer = current_user.answers.find(params[:id])
   end
 
   def set_question
     @question = Question.find(params[:question_id])
-  end
-
-  def set_answer
-    @answer = current_user.answers.find(params[:id])
   end
 end

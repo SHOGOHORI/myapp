@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    @questions = Question.page(params[:page]).per(10).all
+    @questions = Question.all.recently
+    @questions = Kaminari.paginate_array(@questions).page(params[:page])
     respond_to do |format|
       format.html
       format.js
